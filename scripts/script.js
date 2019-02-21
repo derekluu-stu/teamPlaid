@@ -5,6 +5,12 @@ const myTuneApp = {};
 myTuneApp.apiUrl =  "http://ws.audioscrobbler.com/2.0/";
 myTuneApp.apiKey =  "ad9364740e28729d2afec7f390614ec2";
 
+
+// get user input
+myTuneApp.getUserInput = function (){
+    
+}
+
 // searchQuery parameter: artist or genre name
 // searchType parameter: user selected artist or genre search style
 myTuneApp.getArtistData = function(){
