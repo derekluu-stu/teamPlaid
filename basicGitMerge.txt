@@ -1,0 +1,5 @@
+how to merge (basics)
+- switch to the branch you want to update (receive the merge)
+- git merge <name of branch you want to receive merge data from>
+    - local is now updated
+- git push origin (branch you are currently in)    
