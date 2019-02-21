@@ -67,6 +67,7 @@ label[for="searchArtist"]{
     border: 1px solid red;
 }
 
+//add overflow property once we have a better idea of what the data will look like
 .songList {
     margin-left: 3%;
 
@@ -83,15 +84,12 @@ label[for="searchArtist"]{
 // Section with similar artists
 
 .suggestions {
-
     border: 1px solid green;
 
     h2 {
         text-align: center;
         margin-bottom: 1.5%;
     }
-
-
 }
 
 .songPair {
@@ -101,12 +99,6 @@ label[for="searchArtist"]{
     li:first-child {
         margin-bottom: 3%;
     }
-
-    // li:last-child {
-    //     margin-bottom: 4.5%;
-    //     //matches h2 in .suggestions margin spacing
-    // }
-    
 }
 
 // ---------- Footer ---------- 
