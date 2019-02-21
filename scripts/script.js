@@ -10,7 +10,6 @@ myTuneApp.printResults = function (results1, results2, searchType){
     
     const $songList = $(".songList>ol");
     const $songImage = $(".songImage");
-    let artistName;
 
     $songList.empty();
     $songImage.empty();
