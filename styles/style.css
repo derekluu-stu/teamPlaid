@@ -176,7 +176,7 @@ header {
   margin: 2.5% 0;
   border: 1px solid blue; }
 
-nav .flexRow {
+.headerMain.flexRow {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between; }
