@@ -36,8 +36,12 @@ section {
 
 // -------------------- Header --------------------
 header {
-    margin: $sectionSpace 0;
     border: 1px solid blue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: blue;
 }
 
 .headerMain.flexRow {
@@ -53,20 +57,26 @@ label[for="searchArtist"]{
 }
 
 // -------------------- Main Styling --------------------
-
-
+main{
+    margin: 100px 0;
+}
 // Section with song info
 
  .songImage, .songList {
-    flex: 1 1 50%;
     // shorthand for <grow> <shrink> <basis>
     flex-wrap: wrap;
     border: 1px solid red;
 }
 
-//add overflow property once we have a better idea of what the data will look like
+.songImage {
+    flex: 1 1 40%;
+}
+
 .songList {
+    flex: 1 1 60%;
     margin-left: 3%;
+    height: 400px;
+    overflow: scroll; 
 
     h2, li {
         margin-bottom: 1.5%;
@@ -104,6 +114,10 @@ footer {
     text-align: center;
     padding: .75% 0;
     border: 1px solid purple;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 
