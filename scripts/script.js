@@ -36,13 +36,17 @@ myTuneApp.handleUserSearch = function (){
         event.preventDefault();
 
         const $userInput = $('.searchBar>input[type="text"]');
-
-        if($userInput.val()){
+        const $searchParameter = $('.searchFunction>input[name="searchParameter"]:checked');
+        
+        // search based on input value and search type selection
+        if($userInput.val() && $searchParameter === "searchArtist"){
             this.getArtistData($userInput.val());
+
+        } else if ($userInput.val() && $searchParameter === "searchGenre"){
+            this.getGenreData($userInput.val());
         }
 
         $userInput.val("")
-        
     });
 };
 
