@@ -62,7 +62,7 @@ main{
 }
 // Section with song info
 
- .songImage, .songList {
+ .songImage, .songListWindow {
     // shorthand for <grow> <shrink> <basis>
     flex-wrap: wrap;
     border: 1px solid red;
@@ -72,10 +72,14 @@ main{
     flex: 1 1 40%;
 }
 
-.songList {
+.songListWindow {
     flex: 1 1 60%;
     margin-left: 3%;
     height: 400px;
+}
+
+.songList {
+    height: 325px;
     overflow: scroll; 
 
     h2, li {

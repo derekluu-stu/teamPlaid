@@ -240,7 +240,7 @@ main {
   margin: 100px 0;
 }
 
-.songImage, .songList {
+.songImage, .songListWindow {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   border: 1px solid red;
@@ -252,12 +252,16 @@ main {
           flex: 1 1 40%;
 }
 
-.songList {
+.songListWindow {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 60%;
           flex: 1 1 60%;
   margin-left: 3%;
   height: 400px;
+}
+
+.songList {
+  height: 325px;
   overflow: scroll;
 }
 

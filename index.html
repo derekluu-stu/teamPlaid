@@ -17,8 +17,10 @@
                 <form action="" class="searchFunction">
                     <input type="radio" id="searchArtist" name="searchParameter">
                     <label for="searchArtist">Artist</label>
+
                     <input type="radio" id="searchGenre" name="searchParameter">
                     <label for="searchGenre">Genre</label>
+
                     <div class="searchBar">
                         <input type="text" placeholder="Search">
                         <input type="submit" value="Search">
@@ -28,17 +30,22 @@
             </nav>
         </div>
     </header>
+
     <main>
         <!-- Section with the song image and songs list -->
         <section>
             <div class="wrapper">
                 <div class="songInfo flexRow flexColumn_mobile">
-                    <div class="songImage">
-                    </div>
-                    <div class="songList">
+
+                    <div class="songImage"></div>
+
+                    <div class="songListWindow">
                         <h2>Top Songs</h2>
-                        <ol></ol>
+                        <div class="songList">
+                            <ol></ol>
+                        </div>
                     </div>
+
                 </div> <!-- flexrow -->
             </div> <!-- wrapper -->
         </section>
@@ -48,20 +55,23 @@
             <div class="wrapper">
                 <div class="suggestions">
                     <h2>Similar Artists</h2>
-                    <ul class="flexRow">
+
+                    <div class="flexRow">
                         <div class="songPair">
                             <li><a href="">Song 1</a></li>
                             <li><a href="">Song 2</a></li>
                         </div>
+
                         <div class="songPair">
                             <li><a href="">Song 3</a></li>
                             <li><a href="">Song 4</a></li>
                         </div>
+
                         <div class="songPair">
                             <li><a href="">Song 5</a></li>
                             <li><a href="">Song 6</a></li>
                         </div>
-                    </ul>
+                    </div>
                 </div>
             </div> <!-- wrapper -->
         </section>
