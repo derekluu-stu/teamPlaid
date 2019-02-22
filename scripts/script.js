@@ -27,7 +27,7 @@ myTuneApp.printResults = function (infoResults, trackResults, searchType){
 
     //top artists by genre 
     // const similarArtistsGenre = results3.topartists.artist
-}
+
 
 // get user input
 myTuneApp.handleUserSearch = function (){
@@ -149,7 +149,7 @@ myTuneApp.getInitialData = function() {
 
 myTuneApp.init = function() {
 
-    // this.getInitialData();
+    this.getInitialData();
     this.handleUserSearch();
 };
 
