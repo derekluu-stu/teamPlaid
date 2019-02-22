@@ -22,13 +22,15 @@ myTuneApp.printResults = function (infoResults, trackResults, searchType){
     $songImage.append(`<img src="${image}" alt="Image of ${artistName}">`);
 
     // append song names from trackResults
-    trackResults.forEach((track) => $songList.append(`<li>${track.name}</li>`));
+    trackResults.forEach((track) => {
+        $songList.append(`<li>${track.name}</li>`);
+    });
 }
-
     //genre images sample:
     //results.tracks.track[0].image[results.tracks.track[0].image.length - 1]["#text"];
 
-
+    //genre song sample:
+    // results.tracks.track[0].name (drop name when passing)
 
     //top artists by genre 
     // const similarArtistsGenre = results3.topartists.artist
@@ -43,8 +45,8 @@ myTuneApp.handleUserSearch = function (){
         const $userInput = $('.searchBar>input[type="text"]');
 
         if($userInput.val()){
-            // this.getArtistData($userInput.val());
-            this.getGenreData($userInput.val());
+            this.getArtistData($userInput.val());
+            // this.getGenreData($userInput.val());
         }
 
         $userInput.val("")
@@ -83,7 +85,13 @@ myTuneApp.getGenreData = function (userGenreQuery){
     // })
     // metadata: results3.topartists.artist 
     .then((results) => {
-        console.log(results.tracks.track[0].image[results.tracks.track[0].image.length - 1]["#text"]);
+        console.log(results.tracks.track);
+
+        //image is stored in an array which holds the track name and iimage
+            // track name is iterated
+            //image is not, how do we match the index of the track with the track name
+        //first figure out how the image will change based on what the user clicks
+
         // myTuneApp.printResults(results.tracks.track[1], results.tracks.track);
     })
 };
@@ -155,7 +163,7 @@ myTuneApp.getInitialData = function() {
 
 myTuneApp.init = function() {
 
-    // this.getInitialData();
+    this.getInitialData();
     this.handleUserSearch();
 };
 
