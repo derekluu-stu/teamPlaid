@@ -1,0 +1,125 @@
+// -------------------- Universals --------------------
+
+html {
+    font-size: 125%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+section {
+    margin-bottom: $sectionSpace;
+}
+
+.wrapper {
+    width: 80%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.flexRow {
+    display: flex;
+}
+
+
+// -------------------- Header --------------------
+header {
+    border: 1px solid blue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: blue;
+}
+
+.headerMain.flexRow {
+    justify-content: space-between;
+}
+
+label[for="searchArtist"]{
+    margin-right: 3%;
+}
+
+.searchBar {
+    margin-top: 1.5%;
+}
+
+// -------------------- Main Styling --------------------
+main{
+    margin: 100px 0;
+}
+// Section with song info
+
+ .songImage, .songList {
+    // shorthand for <grow> <shrink> <basis>
+    flex-wrap: wrap;
+    border: 1px solid red;
+}
+
+.songImage {
+    flex: 1 1 40%;
+}
+
+.songList {
+    flex: 1 1 60%;
+    margin-left: 3%;
+    height: 400px;
+    overflow: scroll; 
+
+    h2, li {
+        margin-bottom: 1.5%;
+    }
+
+    li:nth-child(2n + 1){
+        background-color: black;
+        color: white;
+    }
+}
+
+// Section with similar artists
+
+.suggestions {
+    border: 1px solid green;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 1.5%;
+    }
+}
+
+.songPair {
+    flex: 1 1 33.33%;
+    text-align: center;
+
+    li:first-child {
+        margin-bottom: 3%;
+    }
+}
+
+// ---------- Footer ---------- 
+
+footer {
+    text-align: center;
+    padding: .75% 0;
+    border: 1px solid purple;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+
+

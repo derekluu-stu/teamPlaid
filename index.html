@@ -9,9 +9,79 @@
 
 </head>
 <body>
+    
+    <header>
+        <div class="headerMain wrapper flexRow">
+            <h1>myTunes</h1>
+            <nav>
+                <form action="" class="searchFunction">
+                    <input type="radio" id="searchArtist" name="searchParameter">
+                    <label for="searchArtist">Artist</label>
+                    <input type="radio" id="searchGenre" name="searchParameter">
+                    <label for="searchGenre">Genre</label>
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search">
+                        <input type="submit" value="Search">
+                        <!-- make this button a search icon -->
+                    </div>
+                </form>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- Section with the song image and songs list -->
+        <section>
+            <div class="wrapper">
+                <div class="songInfo flexRow flexColumn_mobile">
+                    <div class="songImage">
+                    </div>
+                    <div class="songList">
+                        <h2>Top Songs</h2>
+                        <ol></ol>
+                    </div>
+                </div> <!-- flexrow -->
+            </div> <!-- wrapper -->
+        </section>
 
+<<<<<<< HEAD
  <h1>Derek's first edit</h1>   
 <script src="scripts/script.js"></script>
+=======
+        <!-- Section with suggested artists -->
+        <section>
+            <div class="wrapper">
+                <div class="suggestions">
+                    <h2>Similar Artists</h2>
+                    <ul class="flexRow">
+                        <div class="songPair">
+                            <li><a href="">Song 1</a></li>
+                            <li><a href="">Song 2</a></li>
+                        </div>
+                        <div class="songPair">
+                            <li><a href="">Song 3</a></li>
+                            <li><a href="">Song 4</a></li>
+                        </div>
+                        <div class="songPair">
+                            <li><a href="">Song 5</a></li>
+                            <li><a href="">Song 6</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div> <!-- wrapper -->
+        </section>
+    </main>
+
+    <!-- force commit -->
+    <footer>
+        <div class="wrapper">
+            <p>Created by teamPlaid &copy; 2019</p>
+            <p>Powered by last.fm</p>
+        </div>
+    </footer>
+
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
+    <script src='scripts/script.js'></script>
+>>>>>>> master
 
 </body>
 </html>
