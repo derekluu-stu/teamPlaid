@@ -6,23 +6,23 @@ myTuneApp.apiUrl = "http://ws.audioscrobbler.com/2.0/";
 myTuneApp.apiKey = "ad9364740e28729d2afec7f390614ec2";
 
 //appends to the DOM
-myTuneApp.printResults = function (results1, results2, searchType){
+myTuneApp.printResults = function (infoResults, trackResults, searchType){
     
     const $songList = $(".songList>ol");
     const $songImage = $(".songImage");
-    const image = results1["image"][results1["image"].length - 1]["#text"]
+    const image = infoResults["image"][infoResults["image"].length - 1]["#text"]
     // use searchType to determine where to find artist name data
-    const artistName = searchType === "initial" ? results1["artist"]["name"] : results1["name"];
+    const artistName = searchType === "initial" ? infoResults["artist"]["name"] : infoResults["name"];
 
     // empty display containers
     $songList.empty();
     $songImage.empty();
     
-    // append image from results1
+    // append image from infoResults
     $songImage.append(`<img src="${image}" alt="Image of ${artistName}">`)
 
-    // append song names from results2
-    results2.forEach((track) => $songList.append(`<li>${track.name}</li>`));
+    // append song names from trackResults
+    trackResults.forEach((track) => $songList.append(`<li>${track.name}</li>`));
 };
 
 
@@ -32,9 +32,14 @@ myTuneApp.handleUserSearch = function (){
     $('header form').on('submit', (event) => {
         event.preventDefault();
 
-        const userInput = $('.searchBar>input[type="text"]').val();
+        const $userInput = $('.searchBar>input[type="text"]');
 
-        this.getArtistData(userInput);
+        if($userInput.val()){
+            this.getArtistData($userInput.val());
+        }
+
+        $userInput.val("")
+        
     });
 };
 
@@ -67,10 +72,13 @@ myTuneApp.getArtistData = function(userArtistQuery){
     })
 
     $.when(getArtistInfo, getArtistTracks)
+
     .then((infoResults, trackResults) => {
-        // call printResults with parameters for results1, results2 and searchType
-        myTuneApp.printResults(getArtistInfo["responseJSON"]["artist"], getArtistTracks["responseJSON"]["toptracks"]["track"], "searchQuery");
+
+        // call printResults with parameters for infoResults, trackResults and searchType
+        myTuneApp.printResults(infoResults[0]["artist"], trackResults[0]["toptracks"]["track"], "searchQuery")
     })
+
     .fail((error) => {
         console.log(error)
     })
@@ -90,7 +98,8 @@ myTuneApp.getInitialData = function() {
     })
 
     .then((results) => {
-        // call printResults with parameters for results1, results2 and searchType
+
+        // call printResults with parameters for infoResults, trackResults and searchType
         myTuneApp.printResults(results["tracks"]["track"][0], results["tracks"]["track"], "initial");
     })
 };
