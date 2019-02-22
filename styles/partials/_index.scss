@@ -133,8 +133,18 @@ main{
         padding: 1.75% 0 1.75% 3%;
     }
 
+<<<<<<< HEAD
     li:hover {
         background-color: $accentColor;
+=======
+    :hover {
+        cursor: pointer;
+    }
+
+    li:nth-child(2n + 1){
+        background-color: black;
+        color: white;
+>>>>>>> 452673d2b50c8f43648accb9be407e252bbc95ae
     }
 }
 

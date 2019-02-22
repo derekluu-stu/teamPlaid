@@ -301,6 +301,7 @@ main {
       -ms-flex: 1 1 60%;
           flex: 1 1 60%;
   margin-left: 3%;
+<<<<<<< HEAD
   height: 400px;
 }
 
@@ -326,6 +327,20 @@ main {
 .songList li:hover {
   background-color: #2a4494;
 }
+=======
+  height: 400px; }
+
+.songList {
+  height: 325px;
+  overflow: scroll; }
+  .songList h2, .songList li {
+    margin-bottom: 1.5%; }
+  .songList :hover {
+    cursor: pointer; }
+  .songList li:nth-child(2n + 1) {
+    background-color: black;
+    color: white; }
+>>>>>>> 452673d2b50c8f43648accb9be407e252bbc95ae
 
 .suggestions {
   border: 1px solid green;
