@@ -19,15 +19,20 @@ myTuneApp.printResults = function (infoResults, trackResults, searchType){
     $songImage.empty();
     
     // append image from infoResults
-    $songImage.append(`<img src="${image}" alt="Image of ${artistName}">`)
+    $songImage.append(`<img src="${image}" alt="Image of ${artistName}">`);
 
     // append song names from trackResults
     trackResults.forEach((track) => $songList.append(`<li>${track.name}</li>`));
-};
+}
+
+    //genre images sample:
+    //results.tracks.track[0].image[results.tracks.track[0].image.length - 1]["#text"];
+
+
 
     //top artists by genre 
     // const similarArtistsGenre = results3.topartists.artist
-}
+
 
 // get user input
 myTuneApp.handleUserSearch = function (){
@@ -38,7 +43,8 @@ myTuneApp.handleUserSearch = function (){
         const $userInput = $('.searchBar>input[type="text"]');
 
         if($userInput.val()){
-            this.getArtistData($userInput.val());
+            // this.getArtistData($userInput.val());
+            this.getGenreData($userInput.val());
         }
 
         $userInput.val("")
@@ -77,7 +83,7 @@ myTuneApp.getGenreData = function (userGenreQuery){
     // })
     // metadata: results3.topartists.artist 
     .then((results) => {
-        console.log(results.tracks.track);
+        console.log(results.tracks.track[0].image[results.tracks.track[0].image.length - 1]["#text"]);
         // myTuneApp.printResults(results.tracks.track[1], results.tracks.track);
     })
 };
