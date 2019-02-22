@@ -209,31 +209,18 @@ main {
   -ms-flex: 1 1 60%;
   flex: 1 1 60%;
   margin-left: 3%;
-  height: 400px;
-<<<<<<< HEAD
-}
+  height: 400px; }
 
 .songList {
   height: 325px;
-  overflow: scroll;
-}
-
-.songList h2, .songList li {
-  margin-bottom: 1.5%;
-}
-
-.songList li:nth-child(2n + 1) {
-  background-color: black;
-  color: white;
-}
-=======
   overflow: scroll; }
   .songList h2, .songList li {
     margin-bottom: 1.5%; }
+  .songList :hover {
+    cursor: pointer; }
   .songList li:nth-child(2n + 1) {
     background-color: black;
     color: white; }
->>>>>>> branchDerek
 
 .suggestions {
   border: 1px solid green; }

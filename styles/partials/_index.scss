@@ -86,6 +86,10 @@ main{
         margin-bottom: 1.5%;
     }
 
+    :hover {
+        cursor: pointer;
+    }
+
     li:nth-child(2n + 1){
         background-color: black;
         color: white;
