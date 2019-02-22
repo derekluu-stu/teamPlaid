@@ -213,7 +213,7 @@ myTuneApp.getArtistData = function(userArtistQuery){
     $.when(getArtistInfo, getArtistTracks)
 
     .then((infoResults, trackResults) => {
-
+        console.log(infoResults, trackResults)
         // call printResults with parameters for infoResults, trackResults and searchType
         myTuneApp.printResults(infoResults[0]["artist"], trackResults[0]["toptracks"]["track"], "singleSearch")
         // console.log(infoResults[0]["artist"], trackResults[0]["toptracks"]["track"], "singleSearch")
@@ -239,7 +239,7 @@ myTuneApp.getInitialData = function() {
     })
 
     .then((results) => {
-
+        console.log(results)
         // call printResults with parameters for infoResults, trackResults and searchType
         // console.log(results["tracks"]["track"], results["tracks"]["track"], "initial");
         myTuneApp.printResults(results["tracks"]["track"], results["tracks"]["track"], "initial");
