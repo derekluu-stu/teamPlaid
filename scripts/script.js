@@ -61,7 +61,8 @@ myTuneApp.handleClickSearch = function(){
     $(".songList").on("click", ".track", (event) => {
 
         const $userClick = event.target;
-        console.log($userClick.textContent, $userClick.getAttribute("data-artist"));
+
+        this.getTrackData($userClick.textContent, $userClick.getAttribute("data-artist"));
     })
 };
 
@@ -162,7 +163,7 @@ myTuneApp.getArtistData = function(userArtistQuery){
     $.when(getArtistInfo, getArtistTracks)
 
     .then((infoResults, trackResults) => {
-
+        console.log(infoResults, trackResults)
         // call printResults with parameters for infoResults, trackResults and searchType
         myTuneApp.printResults(infoResults[0]["artist"], trackResults[0]["toptracks"]["track"], "singleSearch")
     })
@@ -186,7 +187,7 @@ myTuneApp.getInitialData = function() {
     })
 
     .then((results) => {
-
+        console.log(results)
         // call printResults with parameters for infoResults, trackResults and searchType
         myTuneApp.printResults(results["tracks"]["track"][0], results["tracks"]["track"], "multiSearch");
     })
