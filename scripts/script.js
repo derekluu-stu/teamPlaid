@@ -84,7 +84,10 @@ myTuneApp.getTrackData = function (userTrackQuery, userArtistQuery){
         console.log(results)
     });
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> stu_branch
 
 myTuneApp.getGenreData = function (userGenreQuery){
 

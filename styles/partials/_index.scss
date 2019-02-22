@@ -4,6 +4,10 @@ html {
     font-size: 125%;
 }
 
+body {
+    font-family: $secondaryFont;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +15,11 @@ html {
 
 li {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: $tertiaryColor;  
 }
 
 img {
@@ -35,13 +44,28 @@ section {
 
 
 // -------------------- Header --------------------
+// media query for wrapping ~ 780px
 header {
-    border: 1px solid blue;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background-color: blue;
+    background-color: $secondaryColor;
+
+    h1 {
+        flex:1 0 50%;
+        font-family: $primaryFont;
+    }
+
+    nav {
+        flex: 1 0 50%;
+        display: flex;
+        flex-flow: column nowrap;
+    }
+}
+
+form{
+    align-self: flex-end;
 }
 
 .headerMain.flexRow {
@@ -54,18 +78,31 @@ label[for="searchArtist"]{
 
 .searchBar {
     margin-top: 1.5%;
+
+    input[type="text"] {
+        background-color: $secondaryColor;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+    }
 }
 
 // -------------------- Main Styling --------------------
 main{
-    margin: 100px 0;
+    background-color: $primaryColor;
+    color: $tertiaryColor;
 }
 // Section with song info
+
+.mainContainer {
+
+    padding: 100px 0;
+}
 
  .songImage, .songListWindow {
     // shorthand for <grow> <shrink> <basis>
     flex-wrap: wrap;
-    border: 1px solid red;
+    // border: 1px solid red;
 }
 
 .songImage {
@@ -76,19 +113,28 @@ main{
     flex: 1 1 60%;
     margin-left: 3%;
     height: 400px;
+
+    h2 {
+        margin-bottom: 2%;
+        padding-left: 1.75%;
+    }
 }
 
 .songList {
     height: 325px;
     overflow: scroll; 
 
-    h2, li {
-        margin-bottom: 1.5%;
-    }
-
     li:nth-child(2n + 1){
         background-color: black;
-        color: white;
+    }
+
+    li {
+        margin-bottom: 1.5%;
+        padding: 1.75% 0 1.75% 3%;
+    }
+
+    li:hover {
+        background-color: $accentColor;
     }
 }
 
@@ -117,12 +163,11 @@ main{
 footer {
     text-align: center;
     padding: .75% 0;
-    border: 1px solid purple;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: blue;
+    background: $secondaryColor;
 }
 
 

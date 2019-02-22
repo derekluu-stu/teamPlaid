@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>myTunes</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300|Open+Sans:600" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
 
 </head>
@@ -32,49 +33,51 @@
     </header>
 
     <main>
+        <div class="mainContainer">
         <!-- Section with the song image and songs list -->
-        <section>
-            <div class="wrapper">
-                <div class="songInfo flexRow flexColumn_mobile">
+            <section>
+                <div class="wrapper">
+                    <div class="songInfo flexRow flexColumn_mobile">
 
-                    <div class="songImage"></div>
+                        <div class="songImage"></div>
 
-                    <div class="songListWindow">
-                        <h2>Top Songs</h2>
-                        <div class="songList">
-                            <ol></ol>
+                        <div class="songListWindow">
+                            <h2>Top Songs</h2>
+                            <div class="songList">
+                                <ol></ol>
+                            </div>
+                        </div>
+
+                    </div> <!-- flexrow -->
+                </div> <!-- wrapper -->
+            </section>
+
+            <!-- Section with suggested artists -->
+            <section>
+                <div class="wrapper">
+                    <div class="suggestions">
+                        <h2>Similar Artists</h2>
+
+                        <div class="flexRow">
+                            <div class="songPair">
+                                <li><a href="">Song 1</a></li>
+                                <li><a href="">Song 2</a></li>
+                            </div>
+
+                            <div class="songPair">
+                                <li><a href="">Song 3</a></li>
+                                <li><a href="">Song 4</a></li>
+                            </div>
+
+                            <div class="songPair">
+                                <li><a href="">Song 5</a></li>
+                                <li><a href="">Song 6</a></li>
+                            </div>
                         </div>
                     </div>
-
-                </div> <!-- flexrow -->
-            </div> <!-- wrapper -->
-        </section>
-
-        <!-- Section with suggested artists -->
-        <section>
-            <div class="wrapper">
-                <div class="suggestions">
-                    <h2>Similar Artists</h2>
-
-                    <div class="flexRow">
-                        <div class="songPair">
-                            <li><a href="">Song 1</a></li>
-                            <li><a href="">Song 2</a></li>
-                        </div>
-
-                        <div class="songPair">
-                            <li><a href="">Song 3</a></li>
-                            <li><a href="">Song 4</a></li>
-                        </div>
-
-                        <div class="songPair">
-                            <li><a href="">Song 5</a></li>
-                            <li><a href="">Song 6</a></li>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- wrapper -->
-        </section>
+                </div> <!-- wrapper -->
+            </section>
+        </div>
     </main>
 
     <!-- force commit -->
