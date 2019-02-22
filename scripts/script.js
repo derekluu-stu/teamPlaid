@@ -25,6 +25,9 @@ myTuneApp.printResults = function (infoResults, trackResults, searchType){
     trackResults.forEach((track) => $songList.append(`<li>${track.name}</li>`));
 };
 
+    //top artists by genre 
+    // const similarArtistsGenre = results3.topartists.artist
+}
 
 // get user input
 myTuneApp.handleUserSearch = function (){
@@ -42,6 +45,45 @@ myTuneApp.handleUserSearch = function (){
         
     });
 };
+
+
+myTuneApp.getGenreData = function (userGenreQuery){
+
+    //returns name of track, artist and image of artist
+    const getTrackInfo = $.ajax({
+        // URL and Method are always stated outside of the data object (in jquery docs)
+        // No method used here, due to the nature of the API
+        url: myTuneApp.apiUrl,
+        // data is the object of parameters, sent as a query string in a "GET" method 
+        data: {
+            api_key: myTuneApp.apiKey,
+            method: 'tag.getTopTracks',
+            tag: userGenreQuery,
+            limit: 25,
+            format: 'json'
+        }
+    })
+
+    //similar artists by genre 
+    // const getSimilarArtistGenre = $.ajax({
+    //     url: myTuneApp.apiUrl,
+    //     data: {
+    //         api_key: myTuneApp.apiKey,
+    //         method: "tag.getTopArtists",
+    //         tag: userGenreQuery ,
+    //         limit: 25,
+    //         format: 'json'
+    //     }
+    // })
+    // metadata: results3.topartists.artist 
+    .then((results) => {
+        console.log(results.tracks.track);
+        // myTuneApp.printResults(results.tracks.track[1], results.tracks.track);
+    })
+};
+
+
+
 
 // searchQuery parameter: artist or genre name
 // searchType parameter: user selected artist or genre search style
@@ -107,7 +149,7 @@ myTuneApp.getInitialData = function() {
 
 myTuneApp.init = function() {
 
-    this.getInitialData();
+    // this.getInitialData();
     this.handleUserSearch();
 };
 
