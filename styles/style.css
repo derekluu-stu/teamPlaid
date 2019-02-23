@@ -222,8 +222,9 @@ section {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-flow: column wrap;
-  flex-flow: column wrap; }
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
 
 .flexRow {
   display: -webkit-box;
@@ -357,41 +358,21 @@ main {
   background-color: #2a4494;
 }
 
-.suggestions {
-<<<<<<< HEAD
-  border: 1px solid green; }
-  .suggestions h2 {
-    text-align: center;
-    margin-bottom: 1.5%; }
-  .suggestions li {
-    display: inline-block;
-    -ms-flex-preferred-size: 200px;
-    flex-basis: 200px; }
-=======
-  border: 1px solid green;
-}
-
 .suggestions h2 {
   text-align: center;
   margin-bottom: 1.5%;
 }
 
-.songPair {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 33.33%;
-          flex: 1 1 33.33%;
-  text-align: center;
+.suggestions li {
+  display: inline-block;
+  -ms-flex-preferred-size: 200px;
+      flex-basis: 200px;
 }
-
-.songPair li:first-child {
-  margin-bottom: 3%;
-}
->>>>>>> ab927f25bdd7bb3e2461ade1aefa43cc92bd46c6
 
 footer {
   text-align: center;
   padding: .75% 0;
-  background: #333333;
+  background-color: #333333;
 }
 
 @media (max-width: 1000px) {

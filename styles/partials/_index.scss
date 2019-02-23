@@ -49,7 +49,7 @@ section {
 
 
 // -------------------- Header --------------------
-// media query for wrapping ~ 780px
+
 header {
     position: fixed;
     top: 0;
@@ -160,7 +160,6 @@ main{
 // Section with similar artists
 
 .suggestions {
-    border: 1px solid green;
 
     h2 {
         text-align: center;
@@ -179,7 +178,7 @@ main{
 footer {
     text-align: center;
     padding: .75% 0;
-    background: $secondaryColor;
+    background-color: $secondaryColor;
 }
 
 @media (max-width: 1000px) {
