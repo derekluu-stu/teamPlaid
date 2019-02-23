@@ -1,5 +1,10 @@
 // -------------------- Universals --------------------
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     font-size: 125%;
 }
@@ -8,9 +13,8 @@ body {
     font-family: $secondaryFont;
 }
 
-* {
-    margin: 0;
-    padding: 0;
+h1, h2 {
+    font-family: $primaryFont;
 }
 
 li {
@@ -54,7 +58,6 @@ header {
 
     h1 {
         flex:1 0 50%;
-        font-family: $primaryFont;
     }
 
     nav {

@@ -7,35 +7,44 @@ myTuneApp.apiKey = "ad9364740e28729d2afec7f390614ec2";
 
 //appends to the DOM
 myTuneApp.printResults = function (infoResults, trackResults, searchType){
+    // use searchType to determine where to find artist name data
     //infoResults - returns the artist name and the image
     //trackResults - returns track list (same for every method)
 
     const $songList = $(".songList>ol");
     const $songImage = $(".songImage");
-    // use searchType to determine where to find artist name data
-    // const artistName = searchType === "multiSearch" ? infoResults["artist"]["name"] : infoResults["name"];
     
     // empty display containers
     $songList.empty();
     $songImage.empty();
     
     if (searchType === 'multiSearch'){
-        const artistName = infoResults["artist"]["name"];
-        
-        myTuneApp.image = infoResults["image"][infoResults["image"].length - 1]["#text"];
+
+        console.log(trackResults);
+
+        const artistName = trackResults[0]["artist"]["name"]
+        const image = infoResults["image"][infoResults["image"].length - 1]["#text"]; 
+
+        $songImage.append(`<img src="${image}" alt="Image of ${artistName}">`);
         
         trackResults.forEach((track) => {
-            $songList.append(`<li class="track" data-artist="${track.artistName}">${track.name}</li>`);
+            $songList.append(`<li class="track" data-artist="${track.artist.name}">${track.name}</li>`);
         });
         
     } else if (searchType === 'singleSearch') {
 
-        myTuneApp.image = infoResults["image"][infoResults["image"].length - 1]["#text"];
+        const image  = infoResults["image"][infoResults["image"].length - 1]["#text"];
+
         const artistName = infoResults["name"];
+
+        const trackArray = trackResults.toptracks.track;
+
+        $songImage.append(`<img src="${image}" alt="Image of ${artistName}">`);
         
-        trackResults.forEach((track) => {
-            $songList.append(`<li class="track" data-artist="${track.artistName}">${track.name}</li>`);
+        trackArray.forEach((track) => {
+            $songList.append(`<li class="track" data-artist="${artistName}">${track.name}</li>`);
         });
+
         
     
     } else if (searchType === 'initial'){
@@ -47,7 +56,7 @@ myTuneApp.printResults = function (infoResults, trackResults, searchType){
             return tracks.artist.name;
         });
         const tracksArray = trackResults.map((tracks) => {
-            return tracks.name
+            return tracks.name;
         });
         
         $songImage.append(`<img src="${image}" alt="Image of ${artistName}">`);
@@ -102,7 +111,7 @@ myTuneApp.getTrackData = function (userTrackQuery, userArtistQuery){
         url: myTuneApp.apiUrl,
         data: {
             api_key: myTuneApp.apiKey,
-            method: 'tracks.getsimilar',
+            method: 'track.getsimilar',
             track: userTrackQuery,
             artist: userArtistQuery,
             limit: 25,
@@ -111,8 +120,8 @@ myTuneApp.getTrackData = function (userTrackQuery, userArtistQuery){
     })
 
     .then((results) => {
-        myTuneApp.printResults(results["tracks"]["track"][0], results["tracks"]["track"], "searchQuery", "multiSearch");
-        // console.log(results);
+        // myTuneApp.printResults(results["tracks"]["track"][0], results["tracks"]["track"], "multiSearch")
+        console.log(results);
     })
 
     .fail((error) => {
@@ -152,15 +161,7 @@ myTuneApp.getGenreData = function (userGenreQuery){
     // metadata: results3.topartists.artist 
     .then((results) => {
         
-        myTuneApp.printResults(results["tracks"]["track"][0], results["tracks"]["track"], "searchQuery", "multiSearch")
-        // results.tracks.track[0].image[results.tracks.track[0].image.length - 1]["#text"];
-
-        //image is stored in an array which holds the track name and iimage
-            // track name is iterated
-            //image is not, how do we match the index of the track with the track name
-        //first figure out how the image will change based on what the user clicks
-
-        // myTuneApp.printResults(results.tracks.track[1], results.tracks.track);
+        myTuneApp.printResults(results["tracks"]["track"][0], results["tracks"]["track"], "multiSearch")
     })
 };
 
@@ -198,11 +199,8 @@ myTuneApp.getArtistData = function(userArtistQuery){
     $.when(getArtistInfo, getArtistTracks)
 
     .then((infoResults, trackResults) => {
-        console.log(infoResults, trackResults)
-        // call printResults with parameters for infoResults, trackResults and searchType
-        myTuneApp.printResults(infoResults[0]["artist"], trackResults[0]["toptracks"]["track"], "singleSearch")
-        // console.log(infoResults[0]["artist"], trackResults[0]["toptracks"]["track"], "singleSearch")
-    // })
+
+        myTuneApp.printResults(infoResults[0]["artist"], trackResults[0], "singleSearch")
     })
 
     .fail((error) => {
@@ -224,11 +222,7 @@ myTuneApp.getInitialData = function() {
     })
 
     .then((results) => {
-        console.log(results)
-        // call printResults with parameters for infoResults, trackResults and searchType
-        // console.log(results["tracks"]["track"], results["tracks"]["track"], "initial");
         myTuneApp.printResults(results["tracks"]["track"], results["tracks"]["track"], "initial");
-        // artist and track (track is done)
     })
 };
 
