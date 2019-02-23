@@ -10,6 +10,9 @@ myTuneApp.printResults = function (artistInfoArray){
     
     const $songList = $(".songList>ol");
     const $songImage = $(".songImage");
+
+    $songList.empty();
+    $songImage.empty();
     
     // nav'ed into artsit image array; used that to shorten the variable value of displayImage
     const imageArray = artistInfoArray[0]["image"];
@@ -19,7 +22,7 @@ myTuneApp.printResults = function (artistInfoArray){
     
     // append image   
     $songImage.append(`<img src="${displayImage}" alt="image of ${artistName}" class="${artistName}" >`);
-    
+
     //append track results
     artistInfoArray.forEach((track) => {
         $songList.append(`<li class="track" data-artist="${track["artist"]["name"]}">${track.name}</li>`);
@@ -66,23 +69,23 @@ myTuneApp.handleClickSearch = function(){
 // ERROR --> ? hard coded for test
 // get tracks similar to user track slected by click 
 // required info -> artst name, id, image, top tracks
-myTuneApp.getTrackData = function (){
+myTuneApp.getTrackData = function (trackInfo, artistInfo){
 
     $.ajax({
         url: myTuneApp.apiUrl,
         data: {
             api_key: myTuneApp.apiKey,
-            method: 'tracks.getsimilar',
-            track: "the day",
-            artist: "the roots",
+            method: 'track.getsimilar',
+            track: trackInfo,
+            artist: artistInfo,
             limit: 25,
             format: 'json'
         }
     })
 
     .then((results) => {
-        // this.printResults(results["toptracks"]["track"]);
-        console.log(results)
+        this.printResults(results["similartracks"]["track"]);
+        // console.log(results)
     })
 
     .fail((error) => {
