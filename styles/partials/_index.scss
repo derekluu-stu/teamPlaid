@@ -100,9 +100,7 @@ main{
 }
 
  .songImage, .songListWindow {
-    // shorthand for <grow> <shrink> <basis>
     flex-wrap: wrap;
-    // border: 1px solid red;
 }
 
 .songImage {
@@ -135,19 +133,10 @@ main{
     li {
         margin-bottom: 1.5%;
         padding: 1.75% 0 1.75% 3%;
-
     }
-    
+
     li:hover {
         background-color: $accentColor;
-    }
-    :hover {
-        cursor: pointer;
-    }
-
-    li:nth-child(2n + 1){
-        background-color: black;
-        color: white;
     }
 }
 
@@ -182,9 +171,3 @@ footer {
     right: 0;
     background: $secondaryColor;
 }
-
-
-
-
-
-
