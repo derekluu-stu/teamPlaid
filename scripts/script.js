@@ -125,7 +125,7 @@ myTuneApp.getTrackData = function (trackInfo, artistInfo){
     })
 
     .then((results) => {
-        this.printResults(results["similartracks"]["track"], `${trackInfo}: ${artistInfo}`, "track");
+        this.printResults(results["similartracks"]["track"], `${trackInfo} - ${artistInfo}`, "track");
     })
 
     .fail((error) => {
