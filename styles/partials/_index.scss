@@ -1,10 +1,5 @@
 // -------------------- Universals --------------------
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
 html {
     font-size: 125%;
 }
@@ -13,8 +8,9 @@ body {
     font-family: $secondaryFont;
 }
 
-h1, h2 {
-    font-family: $primaryFont;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 li {
@@ -42,6 +38,11 @@ section {
     margin: 0 auto;
 }
 
+.flexColumn {
+    display: flex;
+    flex-flow: column wrap;
+}
+
 .flexRow {
     display: flex;
 }
@@ -58,6 +59,7 @@ header {
 
     h1 {
         flex:1 0 50%;
+        font-family: $primaryFont;
     }
 
     nav {
@@ -103,7 +105,9 @@ main{
 }
 
  .songImage, .songListWindow {
+    // shorthand for <grow> <shrink> <basis>
     flex-wrap: wrap;
+    // border: 1px solid red;
 }
 
 .songImage {
@@ -129,10 +133,6 @@ main{
         background-color: black;
     }
 
-    li:nth-child(2n + 1):hover {
-        background-color: $accentColor;
-    }
-
     li {
         margin-bottom: 1.5%;
         padding: 1.75% 0 1.75% 3%;
@@ -141,6 +141,8 @@ main{
     li:hover {
         background-color: $accentColor;
     }
+
+    
 }
 
 // Section with similar artists
@@ -152,15 +154,12 @@ main{
         text-align: center;
         margin-bottom: 1.5%;
     }
-}
 
-.songPair {
-    flex: 1 1 33.33%;
-    text-align: center;
+    li {
+        display: inline-block;
+        flex-basis: 200px;
+    };
 
-    li:first-child {
-        margin-bottom: 3%;
-    }
 }
 
 // ---------- Footer ---------- 
@@ -174,3 +173,9 @@ footer {
     right: 0;
     background: $secondaryColor;
 }
+
+
+
+
+
+

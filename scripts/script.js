@@ -5,6 +5,15 @@ const myTuneApp = {};
 myTuneApp.apiUrl = "http://ws.audioscrobbler.com/2.0/";
 myTuneApp.apiKey = "ad9364740e28729d2afec7f390614ec2";
 
+//appends similar artists to the DOM
+myTuneApp.printSimilarArtists = function (similarArtistArray) {
+
+    similarArtistArray.forEach((artist) => {
+        $('.flexColumn>ul').append(`<li>${artist.name}</li>`);
+    });
+}
+
+
 //appends to the DOM
 myTuneApp.printResults = function (artistInfoArray){
     
@@ -26,6 +35,8 @@ myTuneApp.printResults = function (artistInfoArray){
     artistInfoArray.forEach((track) => {
         $songList.append(`<li class="track" data-artist="${track["artist"]["name"]}">${track["name"]}</li>`);
     });
+
+    //append similar artists
 };
 
 // handle user text input & submit
@@ -64,6 +75,10 @@ myTuneApp.handleClickSearch = function(){
         myTuneApp.getTrackData(userClickName, userClickArtist)
     })
 };
+
+
+
+
 
 // get tracks similar to user track slected by click 
 // returned info -> artst name, id, image, top tracks
@@ -165,9 +180,10 @@ myTuneApp.getTopTracksByLocation = function(){
     })
 };
 
-myTuneApp.init = function(){
+myTuneApp.init = function(){    
 
     this.getTopTracksByLocation();
+    this.artistGetSimilar();
     this.handleUserSearch();
     this.handleClickSearch();
 };
@@ -176,3 +192,46 @@ $(function (){
 
     myTuneApp.init();
 });
+
+//  //how many returns do we have on average?
+
+//search by artist
+    //put it in handleUserSearch
+    //artist.getSimilar
+        //name = results.similarartists.artist
+            //[index].name
+
+myTuneApp.artistGetSimilar = function () {
+
+    $.ajax({
+        url: myTuneApp.apiUrl,
+        data: {
+            api_key: myTuneApp.apiKey,
+            method: "artist.getsimilar",
+            artist: "Adele", 
+            limit: 25,
+            format: "json"
+        }
+    })
+
+        .then((results) => {
+            myTuneApp.printSimilarArtists(results.similarartists.artist);
+        })
+
+        .fail(() => {
+            return null;
+        })
+};
+
+//search by genre
+    //put it in handleUserSearch
+    //tag.getTopArtists
+        //name results.topartists.artist
+            //[index].name
+
+//initial load
+    //put it in init
+    //create seperate function for similarArtists
+    //geo.gettopartists
+        //name results.topartists.artist
+            //[index].name
