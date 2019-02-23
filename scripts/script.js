@@ -25,9 +25,9 @@ myTuneApp.printResults = function (artistInfoArray){
 
     //append track results
     artistInfoArray.forEach((track) => {
-        $songList.append(`<li class="track" data-artist="${track["artist"]["name"]}">${track.name}</li>`);
+        $songList.append(`<li class="track" data-artist="${track["artist"]["name"]}">${track["name"]}</li>`);
     });
-}
+};
 
 // handle user text input & submit
 myTuneApp.handleUserSearch = function (){
@@ -57,20 +57,19 @@ myTuneApp.handleUserSearch = function (){
 // handle user click-search 
 myTuneApp.handleClickSearch = function(){
 
-    $(".songList").on("click", ".track", (event) => {
+    $(".songList").on("click", ".track", function() {
 
-        const $userClick = event.target;
+        const userClickName = $(this).text()
+        const userClickArtist = $(this).attr("data-artist")
 
-        myTuneApp.getTrackData($userClick.textContent, $userClick.getAttribute("data-artist"));
+        myTuneApp.getTrackData(userClickName, userClickArtist)
     })
 };
 
-
-// ERROR --> ? hard coded for test
 // get tracks similar to user track slected by click 
-// required info -> artst name, id, image, top tracks
+// returned info -> artst name, id, image, top tracks
 myTuneApp.getTrackData = function (trackInfo, artistInfo){
-
+    
     $.ajax({
         url: myTuneApp.apiUrl,
         data: {
@@ -85,13 +84,12 @@ myTuneApp.getTrackData = function (trackInfo, artistInfo){
 
     .then((results) => {
         this.printResults(results["similartracks"]["track"]);
-        // console.log(results)
     })
 
-    .fail((error) => {
-        console.log(error);
+    .fail(() => {
+        return null
     })
-}
+};
 
 // get searched genre info -> artst name, id, image, top tracks
 myTuneApp.getGenreData = function (genreQuery){
@@ -115,8 +113,8 @@ myTuneApp.getGenreData = function (genreQuery){
         this.printResults(results["tracks"]["track"]);
     })
 
-    .fail((error) => {
-        console.log(error)
+    .fail(() => {
+        return null;
     })
 };
 
@@ -139,14 +137,14 @@ myTuneApp.getArtistData = function(artistQuery){
         this.printResults(results["toptracks"]["track"]);
     })
 
-    .fail((error) => {
-        console.log(error)
+    .fail(() => {
+        return null;
     })
 };
 
 // gets data of top tracks in user area on page load; currently hard-coded to Canada
-// required info -> artist name, id, image, top tracks
-myTuneApp.getTopTracksByLocation = function() {
+// returned info -> artist name, id, image, top tracks
+myTuneApp.getTopTracksByLocation = function(){
 
     $.ajax({
         url: myTuneApp.apiUrl,
@@ -163,11 +161,10 @@ myTuneApp.getTopTracksByLocation = function() {
         this.printResults(results["tracks"]["track"])
     })
 
-    .fail((error) => {
-        console.log(error)
+    .fail(() => {
+        return null;
     })
 };
-
 
 myTuneApp.init = function() {
 
