@@ -7,6 +7,8 @@ myTuneApp.apiKey = "ad9364740e28729d2afec7f390614ec2";
 
 //appends to the DOM
 myTuneApp.printResults = function (infoResults, trackResults, searchType){
+    //infoResults - returns the artist name and the image
+    //trackResults - returns track list (same for every method)
 
     // console.log(infoResults, trackResults, searchType);
     
@@ -39,6 +41,7 @@ myTuneApp.printResults = function (infoResults, trackResults, searchType){
         const artistsArray = trackResults.map((tracks) => {
             return tracks.artist.name;
         });
+        
         console.log(artistsArray);
 
         //artists: results["tracks"]["track"][0].artist.name
