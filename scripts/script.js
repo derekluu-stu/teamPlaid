@@ -8,9 +8,14 @@ myTuneApp.apiKey = "ad9364740e28729d2afec7f390614ec2";
 //appends similar artists to the DOM
 myTuneApp.printSimilarArtists = function (similarArtistArray) {
 
+    const $similarArtists = $('.flexColumn>ul')
+
+    $similarArtists.empty();
+
     similarArtistArray.forEach((artist) => {
-        $('.flexColumn>ul').append(`<li>${artist.name}</li>`);
+        $similarArtists.append(`<li>${artist.name}</li>`);
     });
+
 }
 
 // handle user text input & submit
@@ -26,9 +31,12 @@ myTuneApp.handleUserSearch = function () {
         // search based on input value and search type selection
         if ($userInput.val().length > 0 && $searchParameter.attr("id") === "searchArtist") {
             this.getArtistData($userInput.val());
+            //need async here, wait for artistData before printing similarArtistData
+            this.artistGetSimilarArtist($userInput.val());
 
         } else if ($userInput.val().length > 0 && $searchParameter.attr("id") === "searchGenre") {
             this.getGenreData($userInput.val());
+            this.genreGetSimilarArtist($userInput.val());
 
         } else {
             return null
@@ -211,7 +219,7 @@ myTuneApp.getTopTracksByLocation = function(){
 myTuneApp.init = function(){    
 
     this.getTopTracksByLocation();
-    this.artistGetSimilar();
+    this.getSimilarArtistsByLocation();
     this.handleUserSearch();
     this.handleClickSearch();
 };
@@ -224,19 +232,14 @@ $(function (){
 //  //how many returns do we have on average?
 
 //search by artist
-    //put it in handleUserSearch
-    //artist.getSimilar
-        //name = results.similarartists.artist
-            //[index].name
-
-myTuneApp.artistGetSimilar = function () {
+myTuneApp.artistGetSimilarArtist = function (artistInfo) {
 
     $.ajax({
         url: myTuneApp.apiUrl,
         data: {
             api_key: myTuneApp.apiKey,
             method: "artist.getsimilar",
-            artist: "Adele", 
+            artist: artistInfo, 
             limit: 25,
             format: "json"
         }
@@ -244,6 +247,7 @@ myTuneApp.artistGetSimilar = function () {
 
         .then((results) => {
             myTuneApp.printSimilarArtists(results.similarartists.artist);
+            //pass array of artists
         })
 
         .fail(() => {
@@ -251,13 +255,55 @@ myTuneApp.artistGetSimilar = function () {
         })
 };
 
-//search by genre
-    //put it in handleUserSearch
-    //tag.getTopArtists
-        //name results.topartists.artist
-            //[index].name
+
+
+//search similar artists by genre
+myTuneApp.genreGetSimilarArtist = function (genre) {
+
+    $.ajax({
+        url: myTuneApp.apiUrl,
+        data: {
+            api_key: myTuneApp.apiKey,
+            method: "tag.getTopArtists",
+            format: "json",
+            tag: genre, 
+            limit: 25
+        }
+    })
+
+        .then((results) => {
+            myTuneApp.printSimilarArtists(results.topartists.artist);
+            //pass the array of artists
+        })
+
+        .fail(() => {
+            return null;
+        })
+};
 
 //initial load
+myTuneApp.getSimilarArtistsByLocation = function () {
+
+    $.ajax({
+        url: myTuneApp.apiUrl,
+        data: {
+            api_key: myTuneApp.apiKey,
+            method: "geo.getTopArtists",
+            format: "json",
+            country: "Canada",
+            limit: 25
+        }
+    })
+
+        .then((results) => {
+            myTuneApp.printSimilarArtists(results.topartists.artist);
+            //pass the array of artists
+        })
+
+        .fail(() => {
+            return null;
+        })
+};
     //put it in init
     //create seperate function for similarArtists
     //geo.gettopartists
