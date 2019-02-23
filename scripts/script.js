@@ -17,8 +17,7 @@ myTuneApp.printResults = function (artistInfoArray){
     // nav'ed into artsit image array; used that to shorten the variable value of displayImage
     const imageArray = artistInfoArray[0]["image"];
     const displayImage = imageArray[imageArray.length - 1]["#text"];
-    const artistInfo = artistInfoArray[0]["artist"];
-    const artistName = artistInfo["name"];
+    const artistName = artistInfoArray[0]["artist"]["name"];
     
     // append image   
     $songImage.append(`<img src="${displayImage}" alt="image of ${artistName}" class="${artistName}" >`);
@@ -166,14 +165,14 @@ myTuneApp.getTopTracksByLocation = function(){
     })
 };
 
-myTuneApp.init = function() {
+myTuneApp.init = function(){
 
     this.getTopTracksByLocation();
     this.handleUserSearch();
     this.handleClickSearch();
 };
 
-$(function () {
+$(function (){
 
     myTuneApp.init();
 });
