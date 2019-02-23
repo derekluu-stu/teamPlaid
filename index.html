@@ -12,45 +12,55 @@
 <body>
     
     <header>
-        <div class="headerMain wrapper flexRow">
+        <div class="headerContainer wrapper flexRow">
+            
             <h1>myTunes</h1>
-            <nav>
-                <form action="" class="searchFunction">
+
+            <form action="submit" class="searchFunction flexRow">
+
+                <div class="searchSelector">
                     <input type="radio" id="searchArtist" name="searchParameter" checked>
                     <label for="searchArtist">Artist</label>
 
                     <input type="radio" id="searchGenre" name="searchParameter">
                     <label for="searchGenre">Genre</label>
+                </div>
 
-                    <div class="searchBar">
-                        <input type="text" placeholder="Search">
-                        <input type="submit" value="Search">
-                        <!-- make this button a search icon -->
-                    </div>
-                </form>
-            </nav>
+                <div class="searchBar">
+                    <input type="text" placeholder="Search">
+                    <input type="submit" value="Search">
+                    <!-- make this button a search icon -->
+                </div>
+            </form>
         </div>
     </header>
 
     <main>
         <div class="mainContainer">
-        <!-- Section with the song image and songs list -->
-            <section>
-                <div class="wrapper">
-                    <div class="songInfo flexRow flexColumn_mobile">
+            <!-- <div class="wrapper flexRow flexColumn_mobile"> -->
+            <div class="mainInfoDisplay wrapper flexRow">
 
-                        <div class="songImage"></div>
+                <!-- Image & Search Info -->
+                <section class="infoContainer flexRow">
+                        
+                    <div class="songImage"></div>
 
-                        <div class="songListWindow">
-                            <h2>Top Songs</h2>
-                            <div class="songList">
-                                <ol></ol>
-                            </div>
-                        </div>
+                    <div class="songInfo">
+                        <h2 class="infoTitle"></h2>
+                        <h3 class="infoText"></h3>
+                    </div>
+                </section>
+                        
+                <!-- Top Tracks Relating to User Search -->
+                <section class="songListContainer">
 
-                    </div> <!-- flexrow -->
-                </div> <!-- wrapper -->
-            </section>
+                    <h2>Top Tracks</h2>
+
+                    <div class="songList">
+                        <ol></ol>
+                    </div> 
+                </section>
+            </div> <!-- wrapper -->
 
             <!-- Section with suggested artists -->
             <section>

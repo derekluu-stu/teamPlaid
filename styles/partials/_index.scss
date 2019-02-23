@@ -56,33 +56,29 @@ header {
     left: 0;
     right: 0;
     background-color: $secondaryColor;
-
-    h1 {
-        flex:1 0 50%;
-        font-family: $primaryFont;
-    }
-
-    nav {
-        flex: 1 0 50%;
-        display: flex;
-        flex-flow: column nowrap;
-    }
 }
 
-form{
-    align-self: flex-end;
-}
-
-.headerMain.flexRow {
+.headerContainer {
+    flex-flow: row wrap;
     justify-content: space-between;
+    align-items: center;
+    padding: 1% 0;
 }
 
-label[for="searchArtist"]{
+input[type="radio"] {
     margin-right: 3%;
 }
 
+label[for="searchArtist"] {
+    margin-right: 7%;
+}
+
+.searchFunction {
+    flex-flow: column wrap;
+}
+
 .searchBar {
-    margin-top: 1.5%;
+    margin-top: 2%;
 
     input[type="text"] {
         background-color: $secondaryColor;
@@ -97,27 +93,43 @@ main{
     background-color: $primaryColor;
     color: $tertiaryColor;
 }
-// Section with song info
 
 .mainContainer {
-
-    padding: 100px 0;
+    padding: 150px 0 0.1% 0;
 }
 
- .songImage, .songListWindow {
-    // shorthand for <grow> <shrink> <basis>
-    flex-wrap: wrap;
-    // border: 1px solid red;
+.infoContainer,
+.songListContainer {
+    max-height: 20%;
+}
+
+.mainInfoDisplay {
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.infoContainer {
+    flex: 1 0 40%;
+    flex-flow: column nowrap;
 }
 
 .songImage {
-    flex: 1 1 40%;
+    width: 300px;
 }
 
-.songListWindow {
+.songInfo {
+    padding: 3% 0;
+
+    h3 {
+        text-transform: capitalize;
+    }
+}
+
+
+// song list section
+.songListContainer {
     flex: 1 1 60%;
-    margin-left: 3%;
-    height: 400px;
 
     h2 {
         margin-bottom: 2%;
@@ -126,7 +138,7 @@ main{
 }
 
 .songList {
-    height: 325px;
+    max-height: 350px;
     overflow: scroll; 
 
     li:nth-child(2n + 1){
@@ -167,15 +179,39 @@ main{
 footer {
     text-align: center;
     padding: .75% 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background: $secondaryColor;
 }
 
+@media (max-width: 1000px) {
+    
+   .mainInfoDisplay {
+        flex-flow: column nowrap;
+        align-items: center;
+    } 
 
+    .infoContainer,
+    .songListContainer {
+        width: 100%;
+    }
 
+    .infoContainer {
+        align-items: center;
+    }
 
+    .songInfo {
+        text-align: center;
+    }
+}
 
+@media (max-width: 768px) {
 
+    .headerContainer {
+        flex-flow: column nowrap;
+        align-items: center;
+        text-align: center;
+    }
+
+    .mainContainer {
+        padding: 200px 0 0.5% 0;
+    }
+}
