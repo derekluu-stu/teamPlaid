@@ -10,71 +10,53 @@ myTuneApp.printResults = function (infoResults, trackResults, searchType){
     //infoResults - returns the artist name and the image
     //trackResults - returns track list (same for every method)
 
-    // console.log(infoResults, trackResults, searchType);
-    
     const $songList = $(".songList>ol");
     const $songImage = $(".songImage");
     // use searchType to determine where to find artist name data
-    const artistName = searchType === "multiSearch" ? infoResults["artist"]["name"] : infoResults["name"];
+    // const artistName = searchType === "multiSearch" ? infoResults["artist"]["name"] : infoResults["name"];
     
-    const image = infoResults["image"][infoResults["image"].length - 1]["#text"];
+    // empty display containers
+    $songList.empty();
+    $songImage.empty();
     
     if (searchType === 'multiSearch'){
         const artistName = infoResults["artist"]["name"];
+        
+        myTuneApp.image = infoResults["image"][infoResults["image"].length - 1]["#text"];
         
         trackResults.forEach((track) => {
             $songList.append(`<li class="track" data-artist="${track.artistName}">${track.name}</li>`);
         });
         
     } else if (searchType === 'singleSearch') {
-        const artistName = infoResults["name"]
+
+        myTuneApp.image = infoResults["image"][infoResults["image"].length - 1]["#text"];
+        const artistName = infoResults["name"];
         
         trackResults.forEach((track) => {
             $songList.append(`<li class="track" data-artist="${track.artistName}">${track.name}</li>`);
         });
         
-        //copy the data into another array and we pull the artist we need in sync with the for loop
+    
     } else if (searchType === 'initial'){
-
-        console.log('this is our initial load');
-
+        
+        const image = infoResults[0]["image"][infoResults[0]["image"].length - 1]["#text"];
+        const artistName = infoResults[0].artist.name;
+        
         const artistsArray = trackResults.map((tracks) => {
             return tracks.artist.name;
         });
+        const tracksArray = trackResults.map((tracks) => {
+            return tracks.name
+        });
         
-        console.log(artistsArray);
-
-        //artists: results["tracks"]["track"][0].artist.name
-
-        // const artistName = 
-
-        console.log(image)
-
-
-
-    }
-    
-    
-    
-    // empty display containers
-    $songList.empty();
-    $songImage.empty();
-    
-    // append image from infoResults    
-    $songImage.append(`<img src="${image}" alt="Image of ${artistName}">`);
-    
-    // append song names from trackResults
-    trackResults.forEach((track) => {
-        // const artistAttr = searchType === "multiSearch" ? infoResults["artist"]["name"] : infoResults["name"];
-        $songList.append(`<li class="track" data-artist="${track.artistName}">${track.name}</li>`);
-        // this works for click search
-    });
+        $songImage.append(`<img src="${image}" alt="Image of ${artistName}">`);
+        
+        for (i = 0; i < trackResults.length - 1; i++){
+            $songList.append(`<li class="track" data-artist="${artistsArray[i]}">${tracksArray[i]}</li>`);
+        };
+    };
 }
-    
-
-    //genre song sample:
-    // results.tracks.track[0].name (drop name when passing)
-
     //top artists by genre 
     // const similarArtistsGenre = results3.topartists.artist
 
