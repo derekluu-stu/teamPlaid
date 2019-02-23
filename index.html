@@ -35,20 +35,30 @@
     <main>
         <div class="mainContainer">
         <!-- Section with the song image and songs list -->
-            <section>
-                <div class="wrapper">
-                    <div class="songInfo flexRow flexColumn_mobile">
+            <section class="mainInfoDisplayContainer">
+                <!-- <div class="wrapper flexRow flexColumn_mobile"> -->
+                <div class="mainInfoDisplay wrapper flexRow">
 
+                    <!-- Image & Search Info -->
+                    <section class="infoContainer flexRow">
+                        
                         <div class="songImage"></div>
 
-                        <div class="songListWindow">
-                            <h2>Top Songs</h2>
-                            <div class="songList">
-                                <ol></ol>
-                            </div>
+                        <div class="songInfo">
+                            <h2 class="infoTitle"></h2>
+                            <h3 class="infoText"></h3>
                         </div>
+                    </section>
+                        
+                    <!-- Top Tracks Relating to User Search -->
+                    <section class="songListContainer">
 
-                    </div> <!-- flexrow -->
+                        <h2>Top Tracks</h2>
+
+                        <div class="songList">
+                            <ol></ol>
+                        </div>                       
+                    </section>
                 </div> <!-- wrapper -->
             </section>
 

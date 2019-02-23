@@ -5,44 +5,21 @@ const myTuneApp = {};
 myTuneApp.apiUrl = "http://ws.audioscrobbler.com/2.0/";
 myTuneApp.apiKey = "ad9364740e28729d2afec7f390614ec2";
 
-//appends to the DOM
-myTuneApp.printResults = function (artistInfoArray){
-    
-    const $songList = $(".songList>ol");
-    const $songImage = $(".songImage");
-
-    $songList.empty();
-    $songImage.empty();
-    
-    // nav'ed into artsit image array; used that to shorten the variable value of displayImage
-    const imageArray = artistInfoArray[0]["image"];
-    const displayImage = imageArray[imageArray.length - 1]["#text"];
-    const artistName = artistInfoArray[0]["artist"]["name"];
-    
-    // append image   
-    $songImage.append(`<img src="${displayImage}" alt="image of ${artistName}" class="${artistName}" >`);
-
-    //append track results
-    artistInfoArray.forEach((track) => {
-        $songList.append(`<li class="track" data-artist="${track["artist"]["name"]}">${track["name"]}</li>`);
-    });
-};
-
 // handle user text input & submit
-myTuneApp.handleUserSearch = function (){
+myTuneApp.handleUserSearch = function () {
 
     $('header form').on('submit', (event) => {
-        
+
         event.preventDefault();
 
         const $userInput = $('.searchBar>input[type="text"]');
         const $searchParameter = $('.searchFunction>input[name="searchParameter"]:checked');
 
         // search based on input value and search type selection
-        if($userInput.val() && $searchParameter.attr("id") === "searchArtist"){
+        if ($userInput.val() && $searchParameter.attr("id") === "searchArtist") {
             this.getArtistData($userInput.val());
 
-        } else if ($userInput.val() && $searchParameter.attr("id") === "searchGenre"){
+        } else if ($userInput.val() && $searchParameter.attr("id") === "searchGenre") {
             this.getGenreData($userInput.val());
 
         } else {
@@ -54,15 +31,73 @@ myTuneApp.handleUserSearch = function (){
 };
 
 // handle user click-search 
-myTuneApp.handleClickSearch = function(){
+myTuneApp.handleClickSearch = function () {
 
-    $(".songList").on("click", ".track", function() {
+    $(".songList").on("click", ".track", function () {
 
         const userClickName = $(this).text()
         const userClickArtist = $(this).attr("data-artist")
 
         myTuneApp.getTrackData(userClickName, userClickArtist)
     })
+};
+
+//appends to the DOM
+myTuneApp.printResults = function (artistInfoArray, searchTitle, searchType){
+    
+    // deconstruct artistInfoArray into needed pieces
+    const {image, artist} = artistInfoArray[0]
+    const displayImage = image[image.length - 1]["#text"];
+    const artistName = artist["name"];
+    
+    // append image   
+    this.appendImages(displayImage, artistName);
+    this.appendRelatedInfo(searchTitle, searchType)
+
+    //append track results
+    this.appendTopTracks(artistInfoArray)
+};
+
+// append related info to search
+myTuneApp.appendRelatedInfo = function(searchTitle, searchType){
+
+    const $infoText = $(".infoText")
+    const $infoTitle = $(".infoTitle")
+    let inset;
+
+    if (searchType === "artist"){
+        insert = "by"
+    } else if (searchType === "track"){
+        insert = "Related To"
+    } else if (searchType === "location"){
+        insert = "in"
+    } else if (searchType === "genre"){
+        insert = "Tagged As"
+    }
+
+    $infoTitle.text(`Top Tracks ${insert}`);
+    $infoText.text(searchTitle);
+};
+
+// append images to DOM
+myTuneApp.appendImages = function(displayImage, artistName){
+
+    const $songImage = $(".songImage");
+
+    $songImage.empty();
+    $songImage.append(`<img src="${displayImage}" alt="image of ${artistName}" class="${artistName}" >`);
+};
+
+// append top tracks to DOM
+myTuneApp.appendTopTracks = function(artistInfoArray) {
+
+    const $songList = $(".songList>ol");
+
+    $songList.empty();
+
+    artistInfoArray.forEach((track) => {
+        $songList.append(`<li class="track" data-artist="${track["artist"]["name"]}">${track["name"]}</li>`);
+    });
 };
 
 // get tracks similar to user track slected by click 
@@ -82,7 +117,7 @@ myTuneApp.getTrackData = function (trackInfo, artistInfo){
     })
 
     .then((results) => {
-        this.printResults(results["similartracks"]["track"]);
+        this.printResults(results["similartracks"]["track"], `${trackInfo} by ${artistInfo}`, "track");
     })
 
     .fail(() => {
@@ -109,7 +144,7 @@ myTuneApp.getGenreData = function (genreQuery){
     })
 
     .then((results) => {
-        this.printResults(results["tracks"]["track"]);
+        this.printResults(results["tracks"]["track"], genreQuery, "genre");
     })
 
     .fail(() => {
@@ -133,7 +168,7 @@ myTuneApp.getArtistData = function(artistQuery){
     })
 
     .then((results) => {
-        this.printResults(results["toptracks"]["track"]);
+        this.printResults(results["toptracks"]["track"], artistQuery, "artist");
     })
 
     .fail(() => {
@@ -157,7 +192,7 @@ myTuneApp.getTopTracksByLocation = function(){
     })
 
     .then((results) => {
-        this.printResults(results["tracks"]["track"])
+        this.printResults(results["tracks"]["track"], "Canada", "location") // pass location vaariable here
     })
 
     .fail(() => {
