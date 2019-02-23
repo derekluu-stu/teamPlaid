@@ -19,7 +19,7 @@ myTuneApp.printResults = function (artistInfoArray){
     
     // append image   
     $songImage.append(`<img src="${displayImage}" alt="image of ${artistName}" class="${artistName}" >`);
-    console.log(artistInfoArray)
+    
     //append track results
     artistInfoArray.forEach((track) => {
         $songList.append(`<li class="track" data-artist="${track["artist"]["name"]}">${track.name}</li>`);
