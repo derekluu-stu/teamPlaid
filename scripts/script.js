@@ -13,17 +13,17 @@ myTuneApp.handleUserSearch = function () {
         event.preventDefault();
 
         const $userInput = $('.searchBar>input[type="text"]');
-        const $searchParameter = $('.searchFunction>input[name="searchParameter"]:checked');
+        const $searchParameter = $('.searchSelector>input[name="searchParameter"]:checked');
 
         // search based on input value and search type selection
-        if ($userInput.val() && $searchParameter.attr("id") === "searchArtist") {
+        if ($userInput.val().length > 0 && $searchParameter.attr("id") === "searchArtist") {
             this.getArtistData($userInput.val());
 
-        } else if ($userInput.val() && $searchParameter.attr("id") === "searchGenre") {
+        } else if ($userInput.val().length > 0 && $searchParameter.attr("id") === "searchGenre") {
             this.getGenreData($userInput.val());
 
         } else {
-            return null;
+            return null
         }
 
         $userInput.val("")
@@ -117,11 +117,11 @@ myTuneApp.getTrackData = function (trackInfo, artistInfo){
     })
 
     .then((results) => {
-        this.printResults(results["similartracks"]["track"], `${trackInfo} by ${artistInfo}`, "track");
+        this.printResults(results["similartracks"]["track"], `${trackInfo}: ${artistInfo}`, "track");
     })
 
-    .fail(() => {
-        return null
+    .fail((error) => {
+        console.log(error)
     })
 };
 
@@ -147,8 +147,8 @@ myTuneApp.getGenreData = function (genreQuery){
         this.printResults(results["tracks"]["track"], genreQuery, "genre");
     })
 
-    .fail(() => {
-        return null;
+    .fail((error) => {
+        console.log(error);
     })
 };
 
@@ -171,8 +171,8 @@ myTuneApp.getArtistData = function(artistQuery){
         this.printResults(results["toptracks"]["track"], artistQuery, "artist");
     })
 
-    .fail(() => {
-        return null;
+    .fail((error) => {
+        console.log(error);
     })
 };
 
@@ -195,8 +195,8 @@ myTuneApp.getTopTracksByLocation = function(){
         this.printResults(results["tracks"]["track"], "Canada", "location") // pass location vaariable here
     })
 
-    .fail(() => {
-        return null;
+    .fail((error) => {
+        console.log(error);
     })
 };
 
