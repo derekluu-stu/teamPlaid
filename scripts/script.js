@@ -16,8 +16,14 @@ myTuneApp.handleSimilarArtistsClickSearch = function () {
 //appends similar artists to the DOM
 myTuneApp.printSimilarArtists = function (similarArtistArray) {
 
+    
+    const $displayImage = similarArtistArray[0]["image"][similarArtistArray[0]["image"].length -1]["#text"];
+    const $artistName = similarArtistArray[0].name;
+    
+    myTuneApp.appendImages($displayImage, $artistName);
+    
     $('.grid').empty();
-
+    
     similarArtistArray.forEach((artist) => {
         $('.grid').append(`<li data-artist="${artist.name}">${artist.name}</li>`);
     });
