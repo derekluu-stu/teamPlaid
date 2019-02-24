@@ -5,15 +5,21 @@ const myTuneApp = {};
 myTuneApp.apiUrl = "http://ws.audioscrobbler.com/2.0/";
 myTuneApp.apiKey = "ad9364740e28729d2afec7f390614ec2";
 
+myTuneApp.handleSimilarArtistsClickSearch = function () {
+
+    $('.grid').on('click', 'li', function (){
+        const artistName = $(this).attr("data-artist");
+        myTuneApp.getArtistData(artistName);
+    })
+}
+
 //appends similar artists to the DOM
 myTuneApp.printSimilarArtists = function (similarArtistArray) {
 
-    const $similarArtists = $('.flexColumn>ul')
-
-    $similarArtists.empty();
+    $('.grid').empty();
 
     similarArtistArray.forEach((artist) => {
-        $similarArtists.append(`<li>${artist.name}</li>`);
+        $('.grid').append(`<li data-artist="${artist.name}">${artist.name}</li>`);
     });
 
 }
@@ -216,18 +222,6 @@ myTuneApp.getTopTracksByLocation = function(){
     })
 };
 
-myTuneApp.init = function(){    
-
-    this.getTopTracksByLocation();
-    this.getSimilarArtistsByLocation();
-    this.handleUserSearch();
-    this.handleClickSearch();
-};
-
-$(function (){
-
-    myTuneApp.init();
-});
 
 //  //how many returns do we have on average?
 
@@ -255,8 +249,6 @@ myTuneApp.artistGetSimilarArtist = function (artistInfo) {
         })
 };
 
-
-
 //search similar artists by genre
 myTuneApp.genreGetSimilarArtist = function (genre) {
 
@@ -281,7 +273,7 @@ myTuneApp.genreGetSimilarArtist = function (genre) {
         })
 };
 
-//initial load
+//initial 
 myTuneApp.getSimilarArtistsByLocation = function () {
 
     $.ajax({
@@ -309,3 +301,20 @@ myTuneApp.getSimilarArtistsByLocation = function () {
     //geo.gettopartists
         //name results.topartists.artist
             //[index].name
+
+
+
+myTuneApp.init = function () {
+
+    this.getTopTracksByLocation();
+    this.getSimilarArtistsByLocation();
+    this.handleUserSearch();
+    this.handleClickSearch();
+    this.handleSimilarArtistsClickSearch();
+};
+
+
+$(function () {
+
+    myTuneApp.init();
+});
