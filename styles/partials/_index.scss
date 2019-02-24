@@ -152,6 +152,7 @@ main{
 
     li:hover {
         background-color: $accentColor;
+        cursor: pointer;
     }
 
     
@@ -159,19 +160,30 @@ main{
 
 // Section with similar artists
 
+
 .suggestions {
     border: 1px solid green;
-
+    
     h2 {
         text-align: center;
         margin-bottom: 1.5%;
     }
-
-    li {
-        display: inline-block;
-        flex-basis: 200px;
-    };
-
+    
+    
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+        li {
+            margin-bottom: 1.5%;
+            
+        }
+        
+        li:hover {
+            cursor: pointer;
+            background-color: $accentColor;
+        }
+    }
 }
 
 // ---------- Footer ---------- 
