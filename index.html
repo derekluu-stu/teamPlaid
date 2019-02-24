@@ -38,7 +38,7 @@
     <main>
         <div class="mainContainer">
             <!-- <div class="wrapper flexRow flexColumn_mobile"> -->
-            <div class="mainInfoDisplay wrapper flexRow">
+            <section class="mainInfoDisplay wrapper flexRow">
 
                 <!-- Image & Search Info -->
                 <section class="infoContainer flexRow">
@@ -54,13 +54,18 @@
                 <!-- Top Tracks Relating to User Search -->
                 <section class="songListContainer">
 
-                    <h2>Top Tracks</h2>
+                    <div class="trackHeader">
+                        <ol class="trackHeading flexRow">
+                            <li><h2>Track Title</h2></li>
+                            <li><h2>Track Artist</h2></li>
+                        </ol>
+                    </div>
 
                     <div class="songList">
                         <ol></ol>
                     </div> 
                 </section>
-            </div> <!-- wrapper -->
+            </section> <!-- wrapper -->
 
             <!-- Section with suggested artists -->
             <section>

@@ -180,8 +180,9 @@ section {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-flow: column wrap;
-  flex-flow: column wrap; }
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
 
 .flexRow {
   display: -webkit-box;
@@ -260,9 +261,12 @@ main {
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap; }
 
+<<<<<<< HEAD
 .songImage {
   width: 300px; }
 
+=======
+>>>>>>> stu_branch
 .songInfo {
   padding: 3% 0; }
   .songInfo h3 {
@@ -270,11 +274,17 @@ main {
 
 .songListContainer {
   -webkit-box-flex: 1;
+<<<<<<< HEAD
   -ms-flex: 1 1 60%;
   flex: 1 1 60%; }
   .songListContainer h2 {
     margin-bottom: 2%;
     padding-left: 1.75%; }
+=======
+      -ms-flex: 1 1 60%;
+          flex: 1 1 60%;
+}
+>>>>>>> stu_branch
 
 .songList {
   max-height: 350px;
@@ -288,6 +298,7 @@ main {
     background-color: #2a4494;
     cursor: pointer; }
 
+<<<<<<< HEAD
 .suggestions {
   border: 1px solid green; }
   .suggestions h2 {
@@ -303,13 +314,64 @@ main {
     .suggestions .grid li:hover {
       cursor: pointer;
       background-color: #2a4494; }
+=======
+.trackHeader {
+  margin-bottom: 1.5%;
+}
+
+.trackHeading,
+.track {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.trackHeading li,
+.trackHeading p,
+.track li,
+.track p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 50%;
+          flex: 1 0 50%;
+}
+
+.trackHeading p:hover,
+.track p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.trackHeading li:nth-of-type(2n + 1) {
+  padding-left: 2%;
+}
+
+.suggestions h2 {
+  text-align: center;
+  margin-bottom: 1.5%;
+}
+
+.suggestions li {
+  display: inline-block;
+  -ms-flex-preferred-size: 200px;
+      flex-basis: 200px;
+}
+>>>>>>> stu_branch
 
 footer {
   text-align: center;
   padding: .75% 0;
+<<<<<<< HEAD
   background: #333333; }
+=======
+  background-color: #333333;
+}
+>>>>>>> stu_branch
 
-@media (max-width: 1000px) {
+@media (max-width: 1140px) {
   .mainInfoDisplay {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -326,7 +388,33 @@ footer {
     -ms-flex-align: center;
     align-items: center; }
   .songInfo {
+<<<<<<< HEAD
     text-align: center; } }
+=======
+    text-align: center;
+  }
+  .trackHeading,
+  .track {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    text-align: center;
+  }
+  .trackHeading li,
+  .trackHeading p,
+  .track li,
+  .track p {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 25%;
+            flex: 1 0 25%;
+  }
+  .trackHeading li:nth-of-type(1) {
+    padding-left: 5%;
+  }
+  .trackHeading li:nth-of-type(2) {
+    padding-left: 1%;
+  }
+}
+>>>>>>> stu_branch
 
 @media (max-width: 768px) {
   .headerContainer {
