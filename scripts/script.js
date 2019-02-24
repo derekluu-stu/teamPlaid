@@ -147,7 +147,6 @@ myTuneApp.appendTopTracks = function(artistInfoArray) {
 
         $newLi.appendTo($songList);
 
-        // $songList.append(`<li class="track" data-artist="${track["artist"]["name"]}">${track["name"]}</li>`);
     });
 };
 
@@ -260,9 +259,9 @@ myTuneApp.artistGetSimilarArtist = function (artistInfo) {
         data: {
             api_key: myTuneApp.apiKey,
             method: "artist.getsimilar",
+            format: "json",
             artist: artistInfo, 
-            limit: 25,
-            format: "json"
+            limit: 15
         }
     })
 
@@ -286,7 +285,7 @@ myTuneApp.genreGetSimilarArtist = function (genre) {
             method: "tag.getTopArtists",
             format: "json",
             tag: genre, 
-            limit: 25
+            limit: 15
         }
     })
 
@@ -310,7 +309,7 @@ myTuneApp.getSimilarArtistsByLocation = function () {
             method: "geo.getTopArtists",
             format: "json",
             country: "Canada",
-            limit: 25
+            limit: 15
         }
     })
 
@@ -323,13 +322,6 @@ myTuneApp.getSimilarArtistsByLocation = function () {
             return null;
         })
 };
-    //put it in init
-    //create seperate function for similarArtists
-    //geo.gettopartists
-        //name results.topartists.artist
-            //[index].name
-
-
 
 myTuneApp.init = function () {
 

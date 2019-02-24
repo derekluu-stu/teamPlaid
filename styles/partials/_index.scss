@@ -1,5 +1,10 @@
 // -------------------- Universals --------------------
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     font-size: 125%;
 }
@@ -8,9 +13,8 @@ body {
     font-family: $secondaryFont;
 }
 
-* {
-    margin: 0;
-    padding: 0;
+h1, h2 {
+    font-family: $primaryFont;
 }
 
 li {
@@ -55,7 +59,8 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background-color: $secondaryColor;
+    background-color: $primaryColor;
+    color: $tertiaryColor;
 }
 
 .headerContainer {
@@ -65,26 +70,72 @@ header {
     padding: 1% 0;
 }
 
+form {
+    font-family: $primaryFont;
+    font-weight: 400;
+}
+
 input[type="radio"] {
-    margin-right: 3%;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+    color: $accentColor;
+}
+
+label {
+    transition: color 0.15s ease-in;
+}
+
+label:hover {
+    color: $accentColor;
+    cursor: pointer;
 }
 
 label[for="searchArtist"] {
-    margin-right: 7%;
+    margin-right: 3.5%;
 }
 
 .searchFunction {
-    flex-flow: column wrap;
+    flex-direction: column;
 }
 
 .searchBar {
     margin-top: 2%;
-
+    
     input[type="text"] {
         background-color: $secondaryColor;
-        border-top-color: transparent;
-        border-left-color: transparent;
-        border-right-color: transparent;
+        border: 1.5px solid transparent;        
+        height: 100%;
+        padding-left: 10px;
+        color: $tertiaryColor;
+        transition: border 0.15s ease-in;
+    }
+    
+    input[type="text"]:focus{
+        border-color: $accentColor;
+    }
+    
+    input[type="text"]::placeholder {
+        color: $tertiaryColor;
+    }
+
+    input[type="submit"]{
+        padding: 0 10px 1px 10px;
+        border-radius: 5px;
+        border: 2px solid $secondaryColor;
+        color: $tertiaryColor;
+        background: transparent;
+        transition: color 0.15s ease-in,
+                    border-color 0.15s ease-in,
+                    background 0.15s ease-in;
+    }
+
+    input[type="submit"]:hover {
+        // color: $accentColor;
+        // border-color: $accentColor;
+        background: $accentColor;
+        border-color: transparent;  
     }
 }
 
@@ -140,13 +191,7 @@ main{
         margin-bottom: 1.5%;
         padding: 1.75% 0 1.75% 3%;
     }
-
-    li:hover {
-        background-color: $accentColor;
-        cursor: pointer;
-    }
 }
-
 .trackHeader {
     margin-bottom: 1.5%;
 }
@@ -161,8 +206,12 @@ main{
         flex: 1 0 50%;
     }
 
+    p {
+        transition: color 0.25s ease-in;
+    }
+
     p:hover {
-        text-decoration: underline;
+        color: $accentColor;
         cursor: pointer;
     }
 }
@@ -187,16 +236,17 @@ main{
     
     .grid {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     
         li {
             margin-bottom: 1.5%;
+            transition: color 0.25s ease-in,
             
         }
         
         li:hover {
             cursor: pointer;
-            background-color: $accentColor;
+            color: $accentColor;
         }
     }
 }
@@ -206,9 +256,20 @@ main{
 footer {
     text-align: center;
     padding: .75% 0;
-    background-color: $secondaryColor;
+    background-color: $primaryColor;
+    color: $tertiaryColor;
+    font-size: 0.8rem;
+
+    span {
+        color: $accentColor;
+    }
+
+    p:last-child{
+        font-size: 0.6rem;
+    }
 }
 
+// ---------- media queries ----------
 @media (max-width: 1140px) {
     
    .mainInfoDisplay {
