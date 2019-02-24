@@ -41,12 +41,18 @@ myTuneApp.handleUserSearch = function () {
 // handle user click-search 
 myTuneApp.handleClickSearch = function () {
 
-    $(".songList").on("click", ".track", function () {
+    $(".songList").on("click", "p", function () {
 
-        const userClickName = $(this).text()
-        const userClickArtist = $(this).attr("data-artist")
+        const $selectedType = $(this).attr("data-type");
+        const $selectedTitle = $(this).attr("data-title");
+        const $selectedArtist = $(this).attr("data-artist");
 
-        myTuneApp.getTrackData(userClickName, userClickArtist)
+        if ($selectedType === "track") {
+            myTuneApp.getTrackData($selectedTitle, $selectedArtist)
+
+        } else if ($selectedType === "artist") {
+            myTuneApp.getArtistData($selectedArtist)
+        }
     })
 };
 
@@ -104,7 +110,21 @@ myTuneApp.appendTopTracks = function(artistInfoArray) {
     $songList.empty();
 
     artistInfoArray.forEach((track) => {
-        $songList.append(`<li class="track" data-artist="${track["artist"]["name"]}">${track["name"]}</li>`);
+
+        const $newLi = $("<li/>").addClass(`track flexRow`)
+
+        $("<p/>").text(`${track["name"]}`).appendTo($newLi)
+            .attr(`data-type`, `track`)
+            .attr(`data-title`, `${track["name"]}`)
+            .attr(`data-artist`, `${track["artist"]["name"]}`)
+
+        $("<p/>").text(`${track["artist"]["name"]}`).appendTo($newLi)
+            .attr(`data-type`, `artist`)
+            .attr(`data-artist`, `${track["artist"]["name"]}`)
+
+        $newLi.appendTo($songList);
+
+        // $songList.append(`<li class="track" data-artist="${track["artist"]["name"]}">${track["name"]}</li>`);
     });
 };
 

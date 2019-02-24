@@ -335,11 +335,6 @@ main {
           flex: 1 1 60%;
 }
 
-.songListContainer h2 {
-  margin-bottom: 2%;
-  padding-left: 1.75%;
-}
-
 .songList {
   max-height: 350px;
   overflow: scroll;
@@ -356,6 +351,40 @@ main {
 
 .songList li:hover {
   background-color: #2a4494;
+}
+
+.trackHeader {
+  margin-bottom: 1.5%;
+}
+
+.trackHeading,
+.track {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.trackHeading li,
+.trackHeading p,
+.track li,
+.track p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 50%;
+          flex: 1 0 50%;
+}
+
+.trackHeading p:hover,
+.track p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.trackHeading li:nth-of-type(2n + 1) {
+  padding-left: 2%;
 }
 
 .suggestions h2 {
@@ -375,7 +404,7 @@ footer {
   background-color: #333333;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1140px) {
   .mainInfoDisplay {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -396,6 +425,23 @@ footer {
   }
   .songInfo {
     text-align: center;
+  }
+  .trackHeading,
+  .track {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    text-align: center;
+  }
+  .trackHeading li,
+  .trackHeading p,
+  .track li,
+  .track p {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+  }
+  .trackHeading li:nth-of-type(2n + 1) {
+    padding-left: 5%;
   }
 }
 
