@@ -10,6 +10,8 @@ myTuneApp.handleSimilarArtistsClickSearch = function () {
     $('.grid').on('click', 'li', function (){
         const artistName = $(this).attr("data-artist");
         myTuneApp.getArtistData(artistName);
+        myTuneApp.artistGetSimilarArtist(artistName);
+
     })
 }
 
@@ -73,6 +75,7 @@ myTuneApp.handleClickSearch = function () {
         } else if ($selectedType === "artist") {
             myTuneApp.getArtistData($selectedArtist)
         }
+        myTuneApp.artistGetSimilarArtist($selectedArtist);
     })
 };
 
@@ -248,8 +251,6 @@ myTuneApp.getTopTracksByLocation = function(){
     })
 };
 
-
-//  //how many returns do we have on average?
 
 //search by artist
 myTuneApp.artistGetSimilarArtist = function (artistInfo) {
