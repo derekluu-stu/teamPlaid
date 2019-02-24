@@ -317,10 +317,6 @@ main {
           flex-flow: column nowrap;
 }
 
-.songImage {
-  width: 300px;
-}
-
 .songInfo {
   padding: 3% 0;
 }
@@ -436,12 +432,15 @@ footer {
   .trackHeading p,
   .track li,
   .track p {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-            flex: 0 0 25%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 25%;
+            flex: 1 0 25%;
   }
-  .trackHeading li:nth-of-type(2n + 1) {
+  .trackHeading li:nth-of-type(1) {
     padding-left: 5%;
+  }
+  .trackHeading li:nth-of-type(2) {
+    padding-left: 1%;
   }
 }
 
