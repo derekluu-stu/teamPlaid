@@ -1,3 +1,5 @@
+// !! JavaScript contributions by both Derek and Stuart for different sections of app; refactored once all functions were created !!
+
 // project parent object
 const myTuneApp = {};
 
@@ -40,22 +42,7 @@ myTuneApp.errorResults = {
     name: "Not A Valid Search"
 };
 
-
-myTuneApp.init = function () {
-
-    this.getData(myTuneApp.initialSearchValues);
-    this.getSimilarData(myTuneApp.initialSimilarSearchValues);
-    this.handleTextSearch();
-    this.handleClickSearch();
-};
-
-
-$(function () {
-
-    myTuneApp.init();
-});
-
-
+// route user submited text data
 myTuneApp.handleTextSearch = function() {
 
     $("input[type='submit']").on("click", function(event) {
@@ -64,17 +51,22 @@ myTuneApp.handleTextSearch = function() {
 
         const $searchText = $("input[type='text']");
         const $selectedData = $("input[type='radio']:checked").data();
+
         // organize search data into array; always send 1 parameter to function even with multiple values
         let searchData = [$selectedData, $searchText]
-        
-        myTuneApp.getData(myTuneApp.organizeSearchInfo(searchData))
-        myTuneApp.getSimilarData(myTuneApp.organizeSimilarSearchInfo(searchData));
+
+        // does not allow empty searches
+        if($searchText.val().length > 0) {
+            
+            myTuneApp.getData(myTuneApp.organizeSearchInfo(searchData))
+            myTuneApp.getSimilarData(myTuneApp.organizeSimilarSearchInfo(searchData));
+        }
 
         $searchText.val("")
     });
 };
 
-
+// route user click search data
 myTuneApp.handleClickSearch = function(){
 
     $(".songList").on("click", "p", function () {
@@ -101,16 +93,18 @@ myTuneApp.handleClickSearch = function(){
 
 // organize search data pulled from data attribute tags
 myTuneApp.organizeSearchInfo = function(searchData) {
-    
+    // set base info object to send
     let data = {
         api_key: myTuneApp.apiKey,
         format: "json",
         limit: 25, // hardcoded 25 return limit -> create variable in future?
         autocorrect: 1
     }
+    // folder structure variables
     let returnValue;
     let arrayValue;
 
+    // desconstruct data attributes and add set as object key: value pairs
     for(let key in searchData[0]){
 
         if(key === "search"){
@@ -127,21 +121,24 @@ myTuneApp.organizeSearchInfo = function(searchData) {
         }
     }
 
+    // return as array, this way getData will always expect only one parameter -> not currently necessary, useful for future abstracting?
     return [data, returnValue, arrayValue];
 };
 
 // organize search data pulled from data attribute tags
 myTuneApp.organizeSimilarSearchInfo = function(searchData) {
-
+    // set base info object to send
     let data = {
         api_key: myTuneApp.apiKey,
         limit: 5,
         format: "json",
         autocorrect: 1
     }
+    // folder structure variables
     let returnValue = "similarartists";
     let arrayValue = "artist";
 
+    // desconstruct data attributes and add set as object key: value pairs
     for (let key in searchData[0]) {
 
         if (key === "search" && searchData[0][key] === "tag") {
@@ -160,9 +157,9 @@ myTuneApp.organizeSimilarSearchInfo = function(searchData) {
         }
     }
     
+    // return as array, this way getData will always expect only one parameter -> not currently necessary, useful for future abstracting?
     return [data, returnValue, arrayValue];
 };
-
 
 // fetch data using last.fm API
 myTuneApp.getData = function(data) {
@@ -175,7 +172,11 @@ myTuneApp.getData = function(data) {
         myTuneApp.printResults(results[data[1]][data[2]])
     })
     .fail((error)=>{
+<<<<<<< HEAD
         myTuneApp.printResults(myTuneApp["errorResults"])
+=======
+        return null
+>>>>>>> stu_branch
     })  
 };
 
@@ -190,10 +191,9 @@ myTuneApp.getSimilarData = function(data) {
         myTuneApp.appendSimilarArtists(results[data[1]][data[2]])
     })
     .fail((error) => {
-        myTuneApp.appendSimilarArtists(myTuneApp["errorResults"])
+        return null
     })  
-}
-
+};
 
 // appends to the DOM
 myTuneApp.printResults = function (artistInfoArray) {
@@ -204,7 +204,6 @@ myTuneApp.printResults = function (artistInfoArray) {
     //append track results
     this.appendTopTracks(artistInfoArray)
 };
-
 
 // append images to DOM
 myTuneApp.appendImage = function (artistInfoArray) {
@@ -217,7 +216,6 @@ myTuneApp.appendImage = function (artistInfoArray) {
 
     $songImage.append(`<img src="${image[image.length - 1]['#text']}" alt="image of ${artist['name']}">`);
 };
-
 
 // append top tracks to DOM
 myTuneApp.appendTopTracks = function(artistInfoArray) {
@@ -249,7 +247,6 @@ myTuneApp.appendTopTracks = function(artistInfoArray) {
     });
 };
 
-
 //appends similar artists to the DOM
 myTuneApp.appendSimilarArtists = function (similarArtistArray) {
     
@@ -273,3 +270,16 @@ myTuneApp.appendSimilarArtists = function (similarArtistArray) {
         $('.grid').append($newLi)
     });
 };
+
+myTuneApp.init = function () {
+
+    this.getData(myTuneApp.initialSearchValues);
+    this.getSimilarData(myTuneApp.initialSimilarSearchValues);
+    this.handleTextSearch();
+    this.handleClickSearch();
+};
+
+$(function () {
+
+    myTuneApp.init();
+});
