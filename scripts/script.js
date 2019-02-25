@@ -2,7 +2,7 @@
 const myTuneApp = {};
 
 // api call required info
-myTuneApp.apiUrl = "http://ws.audioscrobbler.com/2.0/";
+myTuneApp.apiUrl = "https://ws.audioscrobbler.com/2.0/";
 myTuneApp.apiKey = "ad9364740e28729d2afec7f390614ec2";
 
 // info to populate initial track and image data based on location
