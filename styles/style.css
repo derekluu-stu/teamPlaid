@@ -117,15 +117,10 @@ button[disabled], input[disabled] {
 }
 
 input[type=checkbox], input[type=radio] {
-<<<<<<< HEAD
-  box-sizing: border-box;
-  padding: 0; }
-=======
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
 }
->>>>>>> stu_branch
 
 input[type=search] {
   -webkit-appearance: textfield;
@@ -178,12 +173,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0;
   white-space: nowrap;
-<<<<<<< HEAD
-  clip-path: inset(100%);
-=======
   -webkit-clip-path: inset(100%);
           clip-path: inset(100%);
->>>>>>> stu_branch
   clip: rect(0 0 0);
   overflow: hidden;
 }
@@ -226,13 +217,9 @@ img {
 }
 
 .flexColumn {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-<<<<<<< HEAD
-  flex-flow: column wrap; }
-
-.flexRow {
-  display: flex; }
-=======
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
@@ -244,7 +231,6 @@ img {
   display: -ms-flexbox;
   display: flex;
 }
->>>>>>> stu_branch
 
 header {
   position: -webkit-sticky;
@@ -260,12 +246,6 @@ header h1 span {
 }
 
 .headerContainer {
-<<<<<<< HEAD
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1% 0; }
-=======
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
@@ -280,7 +260,6 @@ form {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
 }
->>>>>>> stu_branch
 
 input[type="radio"] {
   cursor: pointer;
@@ -305,9 +284,6 @@ label[for="searchArtist"] {
 }
 
 .searchFunction {
-<<<<<<< HEAD
-  flex-flow: column wrap; }
-=======
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -319,7 +295,6 @@ label[for="searchArtist"] {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
->>>>>>> stu_branch
 
 .searchBar {
   margin-top: 2%;
@@ -392,15 +367,6 @@ main {
 }
 
 .mainInfoDisplay {
-<<<<<<< HEAD
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start; }
-
-.infoContainer {
-  flex: 1 0 40%;
-  flex-flow: column nowrap; }
-=======
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
@@ -420,7 +386,6 @@ main {
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
 }
->>>>>>> stu_branch
 
 .songInfo {
   padding: 2.5% 0;
@@ -431,13 +396,9 @@ main {
 }
 
 .songListContainer {
-<<<<<<< HEAD
-  flex: 1 1 60%; }
-=======
   width: 55%;
   margin-bottom: 2.5%;
 }
->>>>>>> stu_branch
 
 .songList {
   max-height: 325px;
@@ -467,19 +428,6 @@ main {
 
 .trackHeading,
 .track {
-<<<<<<< HEAD
-  flex-flow: row wrap;
-  justify-content: flex-start; }
-  .trackHeading li,
-  .trackHeading p,
-  .track li,
-  .track p {
-    flex: 1 0 50%; }
-  .trackHeading p:hover,
-  .track p:hover {
-    text-decoration: underline;
-    cursor: pointer; }
-=======
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
@@ -516,7 +464,6 @@ main {
   color: darkorange;
   cursor: pointer;
 }
->>>>>>> stu_branch
 
 .trackHeading li:nth-of-type(2n + 1) {
   padding-left: 2%;
@@ -538,15 +485,8 @@ main {
 }
 
 .suggestions .grid {
+  display: -ms-grid;
   display: grid;
-<<<<<<< HEAD
-  grid-template-columns: 1fr 1fr 1fr 1fr; }
-  .suggestions .grid li {
-    margin-bottom: 1.5%; }
-  .suggestions .grid li:hover {
-    cursor: pointer;
-    background-color: #2a4494; }
-=======
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   font-size: 0.85rem;
@@ -563,47 +503,10 @@ main {
   cursor: pointer;
   color: darkorange;
 }
->>>>>>> stu_branch
 
 footer {
   text-align: center;
   padding: .75% 0;
-<<<<<<< HEAD
-  background-color: #333333; }
-
-@media (max-width: 1140px) {
-  .mainInfoDisplay {
-    flex-flow: column nowrap;
-    align-items: center; }
-  .infoContainer,
-  .songListContainer {
-    width: 100%; }
-  .infoContainer {
-    align-items: center; }
-  .songInfo {
-    text-align: center; }
-  .trackHeading,
-  .track {
-    justify-content: space-around;
-    text-align: center; }
-    .trackHeading li,
-    .trackHeading p,
-    .track li,
-    .track p {
-      flex: 1 0 25%; }
-  .trackHeading li:nth-of-type(1) {
-    padding-left: 5%; }
-  .trackHeading li:nth-of-type(2) {
-    padding-left: 1%; } }
-
-@media (max-width: 768px) {
-  .headerContainer {
-    flex-flow: column nowrap;
-    align-items: center;
-    text-align: center; }
-  .mainContainer {
-    padding: 200px 0 0.5% 0; } }
-=======
   background-color: #161616;
   color: #e0e2db;
   font-size: 0.75rem;
@@ -736,4 +639,3 @@ footer p:last-child {
   }
 }
 /*# sourceMappingURL=style.css.map */
->>>>>>> stu_branch
