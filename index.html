@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>myTunes</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300|Open+Sans:600" rel="stylesheet">
+    <title>tune.in</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300|Open+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
 
 </head>
+
 <body>
-    
+
     <header>
         <div class="headerContainer wrapper flexRow">
-            
-            <h1>myTunes</h1>
+
+            <h1>tune<span>.</span>in</h1>
 
             <form action="submit" class="searchFunction flexRow">
-
+            
                 <div class="searchSelector">
-                    <input type="radio" id="searchArtist" name="searchParameter" data-method="artist.gettoptracks" data-search="artist" data-return="toptracks" data-array="track" checked>
+                    <input type="radio" id="searchArtist" name="searchParameter" data-method="artist.gettoptracks"
+                        data-search="artist" data-return="toptracks" data-array="track" checked>
                     <label for="searchArtist">Artist</label>
-
-                    <input type="radio" id="searchGenre" name="searchParameter" data-method="tag.gettoptracks" data-search="tag" data-return="tracks" data-array="track">
+            
+                    <input type="radio" id="searchGenre" name="searchParameter" data-method="tag.gettoptracks" data-search="tag"
+                        data-return="tracks" data-array="track">
                     <label for="searchGenre">Genre</label>
                 </div>
-
+            
                 <div class="searchBar">
                     <input type="text" placeholder="Search">
                     <input type="submit" value="Search">
@@ -37,39 +41,41 @@
 
     <main>
         <div class="mainContainer">
-            <!-- <div class="wrapper flexRow flexColumn_mobile"> -->
             <section class="mainInfoDisplay wrapper flexRow">
 
                 <!-- Image & Search Info -->
-                <section class="infoContainer flexRow">
-                        
+                <div class="infoContainer flexRow">
                     <div class="songImage"></div>
 
                     <div class="songInfo">
-                        <h3 class="infoTitle"></h3>
-                        <h2 class="infoText"></h2>
+                        <h2 class="infoTitle"></h2>
+                        <h3 class="infoText"></h3>
                     </div>
-                </section>
-                        
-                <!-- Top Tracks Relating to User Search -->
-                <section class="songListContainer">
+                </div>
 
+                <!-- Top Tracks Relating to User Search -->
+                <div class="songListContainer">
                     <div class="trackHeader">
                         <ol class="trackHeading flexRow">
-                            <li><h2>Track Title</h2></li>
-                            <li><h2>Track Artist</h2></li>
+                            <li>
+                                <h2>Songs</h2>
+                            </li>
+                            <li>
+                                <h2>Artist</h2>
+                            </li>
                         </ol>
                     </div>
 
-                    <div class="songList">
+                    <div class="songList sb-container">
                         <ol></ol>
-                    </div> 
-                </section>
+                    </div>
+                </div>
+
             </section> <!-- wrapper -->
 
             <!-- Section with suggested artists -->
             <section>
-                <div class="wrapper">
+                <div class="similarArtistsContainer wrapper flexRow">
                     <div class="suggestions">
                         <h2>Similar Artists</h2>
                         <ul class="grid">
@@ -80,16 +86,18 @@
         </div>
     </main>
 
-    <!-- force commit -->
     <footer>
         <div class="wrapper">
-            <p>Created by teamPlaid &copy; 2019</p>
+            <p>Created by <span>teamPlaid</span> &copy; 2019</p>
             <p>Powered by last.fm</p>
         </div>
     </footer>
 
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'
+        integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=' crossorigin='anonymous'></script>
     <script src='scripts/script.js'></script>
+    <script src='scripts/scrollBar.js'></script>
 
 </body>
+
 </html>

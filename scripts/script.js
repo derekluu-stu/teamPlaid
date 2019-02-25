@@ -132,7 +132,7 @@ myTuneApp.organizeSearchInfo = function(searchData) {
 
 // organize search data pulled from data attribute tags
 myTuneApp.organizeSimilarSearchInfo = function(searchData) {
-
+    console.log("organize top", searchData)
     let data = {
         api_key: myTuneApp.apiKey,
         limit: 20,
@@ -159,7 +159,7 @@ myTuneApp.organizeSimilarSearchInfo = function(searchData) {
             data["artist"] = searchData[0]["artist"]
         }
     }
-    
+    console.log("organize similar", data, returnValue, arrayValue)
     return [data, returnValue, arrayValue];
 };
 
@@ -182,7 +182,7 @@ myTuneApp.getData = function(data) {
 
 // fetch data  for similar artisr section using last.fm API
 myTuneApp.getSimilarData = function(data) {
-    
+    console.log("get similar data", data)
     $.ajax({
         url: myTuneApp.apiUrl,
         data: data[0]
@@ -191,7 +191,7 @@ myTuneApp.getSimilarData = function(data) {
         myTuneApp.appendSimilarArtists(results[data[1]][data[2]])
     })
     .fail((error) => {
-        myTuneApp.appendSimilarArtists(myTuneApp["errorResults"])
+        console.log(error)
     })  
 }
 
