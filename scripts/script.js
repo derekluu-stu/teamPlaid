@@ -22,7 +22,6 @@ myTuneApp.printSimilarArtists = function (similarArtistArray) {
     const $displayImage = similarArtistArray[0]["image"][similarArtistArray[0]["image"].length -1]["#text"];
     const $artistName = similarArtistArray[0].name;
     
-    myTuneApp.appendImages($displayImage, $artistName);
     
     $('.grid').empty();
     
