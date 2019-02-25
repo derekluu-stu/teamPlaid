@@ -228,7 +228,8 @@ label[for="searchArtist"] {
     height: 100%;
     padding-left: 2%;
     color: #e0e2db;
-    transition: border 0.15s ease-in; }
+    transition: border 0.15s ease-in;
+    width: 70%; }
   .searchBar input[type="text"]:focus {
     border-color: darkorange; }
   .searchBar input[type="text"]::placeholder {

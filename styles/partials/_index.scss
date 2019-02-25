@@ -114,6 +114,7 @@ label[for="searchArtist"] {
         padding-left: 2%;
         color: $tertiaryColor;
         transition: border 0.15s ease-in;
+        width: 70%;
     }
     
     input[type="text"]:focus{
