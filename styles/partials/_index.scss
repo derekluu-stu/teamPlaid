@@ -253,6 +253,8 @@ main{
 .suggestions {
 
     width: 100%; 
+    height: 200px;
+    overflow: scroll;
 
     h2 {
         margin-bottom: 1.5%;
