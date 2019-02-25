@@ -275,7 +275,6 @@ main {
 
 .songListContainer {
   width: 55%;
-  height: 388px;
   margin-bottom: 2.5%; }
 
 .songList {
@@ -288,6 +287,8 @@ main {
     padding: 1.75% 0 1.75% 3%; }
     .songList li p:first-child {
       font-weight: 600; }
+  .songList li:last-child {
+    margin-bottom: 0; }
 
 .trackHeader {
   margin-bottom: 1.5%; }
@@ -376,7 +377,8 @@ footer {
     font-size: 112.5%; }
   .headerContainer {
     justify-content: center;
-    width: 301px; }
+    width: 301px;
+    padding-bottom: 25px; }
   h1, .searchFunction {
     width: 301px; }
   input[type="text"] {
@@ -396,6 +398,10 @@ footer {
   .songListContainer,
   .similarArtistsContainer {
     max-width: 301px; }
+  .songListContainer {
+    margin-bottom: 15px; }
+  .mainInfoDisplay + section {
+    margin-bottom: 25px; }
   .similarArtistsContainer {
     justify-content: center; }
   .suggestions .grid {

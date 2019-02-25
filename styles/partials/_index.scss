@@ -180,7 +180,6 @@ main{
 // song list section
 .songListContainer {
     width: 55%;
-    height: 388px;
     margin-bottom: 2.5%;
 }
 
@@ -199,6 +198,10 @@ main{
         p:first-child{
             font-weight:600;
         }
+    }
+
+    li:last-child {
+        margin-bottom: 0;
     }
 
 }
@@ -357,6 +360,8 @@ footer {
     .headerContainer {
         justify-content: center;
         width: 301px;
+        padding-bottom: 25px;
+        //same space as last section before footer
     }
 
     h1, .searchFunction {
@@ -396,6 +401,14 @@ footer {
         max-width: 301px;
     }
 
+    .songListContainer {
+        margin-bottom: 15px;
+    }
+
+    .mainInfoDisplay + section {
+        margin-bottom: 25px;
+        //same as header space
+    }
     .similarArtistsContainer {
         justify-content: center;
     }
