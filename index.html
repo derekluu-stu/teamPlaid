@@ -19,10 +19,10 @@
             <form action="submit" class="searchFunction flexRow">
 
                 <div class="searchSelector">
-                    <input type="radio" id="searchArtist" name="searchParameter" checked>
+                    <input type="radio" id="searchArtist" name="searchParameter" data-method="artist.gettoptracks" data-search="artist" data-return="toptracks" data-array="track" checked>
                     <label for="searchArtist">Artist</label>
 
-                    <input type="radio" id="searchGenre" name="searchParameter">
+                    <input type="radio" id="searchGenre" name="searchParameter" data-method="tag.gettoptracks" data-search="tag" data-return="tracks" data-array="track">
                     <label for="searchGenre">Genre</label>
                 </div>
 
@@ -46,8 +46,8 @@
                     <div class="songImage"></div>
 
                     <div class="songInfo">
-                        <h2 class="infoTitle"></h2>
-                        <h3 class="infoText"></h3>
+                        <h3 class="infoTitle"></h3>
+                        <h2 class="infoText"></h2>
                     </div>
                 </section>
                         
