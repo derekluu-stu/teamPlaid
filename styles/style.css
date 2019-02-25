@@ -242,7 +242,7 @@ header {
 }
 
 header h1 span {
-  color: #2a4494;
+  color: darkorange;
 }
 
 .headerContainer {
@@ -266,7 +266,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked + label {
-  color: #2a4494;
+  color: darkorange;
 }
 
 label {
@@ -275,7 +275,7 @@ label {
 }
 
 label:hover {
-  color: #2a4494;
+  color: darkorange;
   cursor: pointer;
 }
 
@@ -315,7 +315,7 @@ label[for="searchArtist"] {
 }
 
 .searchBar input[type="text"]:focus {
-  border-color: #2a4494;
+  border-color: darkorange;
 }
 
 .searchBar input[type="text"]::-webkit-input-placeholder {
@@ -347,7 +347,7 @@ label[for="searchArtist"] {
 
 .searchBar input[type="submit"]:hover,
 .searchBar input[type="submit"]:focus {
-  background: #2a4494;
+  background: darkorange;
   border-color: transparent;
   color: #333333;
 }
@@ -461,7 +461,7 @@ main {
 
 .trackHeading p:hover,
 .track p:hover {
-  color: #2a4494;
+  color: darkorange;
   cursor: pointer;
 }
 
@@ -501,7 +501,7 @@ main {
 
 .suggestions .grid li:hover {
   cursor: pointer;
-  color: #2a4494;
+  color: darkorange;
 }
 
 footer {
@@ -513,7 +513,7 @@ footer {
 }
 
 footer span {
-  color: #2a4494;
+  color: darkorange;
 }
 
 footer p:last-child {
@@ -551,7 +551,7 @@ footer p:last-child {
         align-self: flex-start;
   }
   .track.flexRow p:last-child:hover {
-    color: #2a4494;
+    color: darkorange;
   }
   .songList li {
     padding-left: 0%;
