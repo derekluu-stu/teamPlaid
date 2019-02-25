@@ -192,7 +192,7 @@ header {
 .headerContainer {
   flex-flow: row wrap;
   justify-content: space-between;
-  padding: 1% 0 3% 0; }
+  padding: 1% 0 2.5% 0; }
 
 form {
   font-family: "Open Sans", sans-serif;
@@ -227,7 +227,7 @@ label[for="searchArtist"] {
     background-color: #333333;
     border: 1.5px solid transparent;
     height: 100%;
-    padding-left: 10px;
+    padding-left: 2%;
     color: #e0e2db;
     transition: border 0.15s ease-in; }
   .searchBar input[type="text"]:focus {
@@ -241,7 +241,7 @@ label[for="searchArtist"] {
     color: #e0e2db;
     background: transparent;
     transition: all 0.15s ease-in;
-    margin-left: 10px; }
+    margin-left: 2%; }
   .searchBar input[type="submit"]:hover,
   .searchBar input[type="submit"]:focus {
     background: darkorange;
@@ -253,7 +253,7 @@ main {
   color: #e0e2db; }
 
 .mainContainer {
-  padding: 100px 0 0.1% 0; }
+  padding: 10% 0 0.1% 0; }
 
 .infoContainer,
 .songListContainer {
@@ -269,7 +269,7 @@ main {
   flex-flow: column nowrap; }
 
 .songInfo {
-  padding: 3% 0; }
+  padding: 2.5% 0; }
   .songInfo h3 {
     text-transform: capitalize; }
 
@@ -302,6 +302,10 @@ main {
   .trackHeading p,
   .track p {
     transition: color 0.25s ease-in; }
+  .trackHeading p:last-child,
+  .track p:last-child {
+    font-size: 0.75rem;
+    align-self: flex-end; }
   .trackHeading p:hover,
   .track p:hover {
     color: darkorange;
@@ -342,65 +346,67 @@ footer {
   footer p:last-child {
     font-size: 0.55rem; }
 
-@media (max-width: 1140px) {
-  .mainContainer {
-    padding-top: 90px; }
-  .mainInfoDisplay {
-    flex-flow: column nowrap;
-    align-items: center; }
-  .infoContainer,
-  .songListContainer {
-    width: 100%; }
-  .infoContainer {
-    align-items: center; }
-  .trackHeading,
-  .track {
-    justify-content: space-around;
-    text-align: center; }
-    .trackHeading li,
-    .trackHeading p,
-    .track li,
-    .track p {
-      flex: 1 0 25%; }
-  .trackHeading li:nth-of-type(1) {
-    padding-left: 5%; }
-  .trackHeading li:nth-of-type(2) {
-    padding-left: 1%; }
+@media (max-width: 990px) {
+  html {
+    font-size: 100%; }
+  .infoContainer, .songListContainer {
+    width: 50%; }
+  .trackHeading li:last-child {
+    display: none; }
+  .trackHeading li:nth-of-type(2n+1) {
+    padding-left: 0; }
+  .trackHeading li:first-child {
+    flex: 1 0 47%; }
+  .track.flexRow {
+    flex-direction: column; }
+    .track.flexRow p:last-child {
+      font-size: 0.75rem;
+      padding-top: 1%;
+      padding-left: 1%;
+      color: #333333;
+      transition: color 0.15s ease-in;
+      align-self: flex-start; }
+    .track.flexRow p:last-child:hover {
+      color: darkorange; }
+  .songList li {
+    padding-left: 0%; }
   .suggestions .grid {
     grid-template-columns: 1fr 1fr 1fr 1fr; } }
 
-@media (max-width: 768px) {
-  html {
-    font-size: 100%; }
-  .suggestions .grid {
-    grid-template-columns: 1fr 1fr 1fr; } }
-
-@media (max-width: 530px) {
+@media (max-width: 800px) {
   .headerContainer {
-    justify-content: center; }
-    .headerContainer h1 {
-      flex-basis: 301px; }
+    justify-content: center;
+    width: 301px; }
+  h1, .searchFunction {
+    flex-basis: 301px; }
+  input[type="text"] {
+    max-width: 70%; }
+  input[type="submit"] {
+    max-width: 28%; }
   .searchBar {
     justify-content: flex-start; }
+  .mainInfoDisplay {
+    justify-content: center; }
+  .infoContainer, .songListContainer {
+    width: 100%; }
+  .songImage, .songInfo {
+    align-self: center; }
+  .songInfo {
+    width: 301px; }
   .songListContainer,
   .similarArtistsContainer {
     max-width: 301px; }
   .similarArtistsContainer {
     justify-content: center; }
   .suggestions .grid {
+    grid-template-columns: 1fr 1fr 1fr; } }
+
+@media (max-width: 530px) {
+  .wrapper {
+    width: 90%; }
+  .suggestions .grid {
     grid-template-columns: 1fr 1fr; } }
 
 @media (max-width: 391px) {
   .wrapper {
-    width: 90%; }
-  .headerContainer {
-    justify-content: flex-start; }
-  .searchBar {
-    flex-wrap: wrap; }
-    .searchBar input[type="submit"],
-    .searchBar label.search {
-      margin-left: 0;
-      margin-top: 2%; }
-    .searchBar input[type="text"] {
-      width: 100%;
-      height: 50%; } }
+    width: 98%; } }

@@ -67,7 +67,7 @@ header {
 .headerContainer {
     flex-flow: row wrap;
     justify-content: space-between;
-    padding: 1% 0 3% 0;
+    padding: 1% 0 2.5% 0;
 }
 
 form {
@@ -113,7 +113,7 @@ label[for="searchArtist"] {
         background-color: $secondaryColor;
         border: 1.5px solid transparent;        
         height: 100%;
-        padding-left: 10px;
+        padding-left: 2%;
         color: $tertiaryColor;
         transition: border 0.15s ease-in;
     }
@@ -133,7 +133,7 @@ label[for="searchArtist"] {
         color: $tertiaryColor;
         background: transparent;
         transition: all 0.15s ease-in;
-        margin-left: 10px;
+        margin-left: 2%;
     }
 
     input[type="submit"]:hover, 
@@ -151,7 +151,7 @@ main{
 }
 
 .mainContainer {
-    padding: 100px 0 0.1% 0;
+    padding: 10% 0 0.1% 0;
 }
 
 .infoContainer,
@@ -171,7 +171,7 @@ main{
 }
 
 .songInfo {
-    padding: 3% 0;
+    padding: 2.5% 0;
 
     h3 {
         text-transform: capitalize;
@@ -215,6 +215,11 @@ main{
 
     p {
         transition: color 0.25s ease-in;
+    }
+
+    p:last-child {
+        font-size: 0.75rem;
+        align-self: flex-end;
     }
 
     p:hover {
@@ -288,46 +293,48 @@ footer {
 }
 
 // ---------- media queries ----------
-@media (max-width: 1140px) {
+@media (max-width: 990px) {
     
-    .mainContainer {
-        padding-top: 90px;
+    html {
+        font-size: 100%;
     }
 
-   .mainInfoDisplay {
-        flex-flow: column nowrap;
-        align-items: center;
-    } 
-
-    .infoContainer,
-    .songListContainer {
-        width: 100%;
+    .infoContainer, .songListContainer{
+        width: 50%;
     }
 
-    .infoContainer {
-        align-items: center;
+    .trackHeading li:last-child {
+        display: none;
     }
 
-    .trackHeading,
-    .track {
-        justify-content: space-around;
-        text-align: center;
-
-        li,
-        p {
-            flex: 1 0 25%;
-        }
+    .trackHeading li:nth-of-type(2n+1){
+        padding-left: 0;
     }
 
-    .trackHeading {
+    .trackHeading li:first-child{
+        flex: 1 0 47%;
+    }
 
-        li:nth-of-type(1) {
-            padding-left: 5%;
-        }
+    .track.flexRow {
+        flex-direction: column;
 
-        li:nth-of-type(2) {
+        p:last-child{
+            font-size: 0.75rem;
+            padding-top: 1%;
             padding-left: 1%;
+            color: $secondaryColor;
+            transition: color 0.15s ease-in;
+            align-self: flex-start;
         }
+
+        p:last-child:hover {
+            color: $accentColor;
+        }
+
+    }
+
+    .songList li {
+        padding-left: 0%;
     }
 
     .suggestions {
@@ -337,10 +344,53 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
-    html {
-        font-size: 100%;
+    .headerContainer {
+        // flex-direction: column;
+        justify-content: center;
+        width: 301px;
+    }
+
+    h1, .searchFunction {
+        flex-basis: 301px;
+    }
+
+    input[type="text"]{
+        max-width: 70%;
+    }
+
+    input[type="submit"]{
+        max-width: 28%;
+    }
+
+    .searchBar {
+        justify-content: flex-start;
+    }
+
+    .mainInfoDisplay{
+        justify-content: center;
+    }
+
+    .infoContainer, .songListContainer {
+        width: 100%;
+    }
+
+    .songImage, .songInfo{
+        align-self: center;
+    }
+
+    .songInfo {
+        width: 301px;
+    }
+
+    .songListContainer,
+    .similarArtistsContainer {
+        max-width: 301px;
+    }
+
+    .similarArtistsContainer {
+        justify-content: center;
     }
 
     .suggestions {
@@ -353,35 +403,10 @@ footer {
 
 @media (max-width: 530px) {
 
-
-    .headerContainer {
-
-        justify-content: center;
-
-        h1 {
-            flex-basis: 301px;
-        }
+    .wrapper {
+        width: 90%;
     }
-
-    .searchBar {
-        justify-content: flex-start;
-    }
-
-    // .infoContainer {
-    //     flex-direction: column;
-    //     align-items: flex-start;
-    // }
-
-
-    .songListContainer,
-    .similarArtistsContainer {
-        max-width: 301px;
-    }
-
-    .similarArtistsContainer {
-        justify-content: center;
-    }
-    
+  
     .suggestions {
 
         .grid {
@@ -394,25 +419,8 @@ footer {
 @media (max-width: 391px){
 
     .wrapper {
-        width: 90%;
+        width: 98%;
     }
 
-    .headerContainer {
-        justify-content: flex-start;
-    }
 
-    .searchBar {
-        flex-wrap: wrap;
-
-        input[type="submit"],
-        label.search{
-            margin-left: 0;
-            margin-top: 2%;
-        }
-
-        input[type="text"]{
-            width: 100%;
-            height: 50%;
-        }
-    }
 }
