@@ -172,11 +172,7 @@ myTuneApp.getData = function(data) {
         myTuneApp.printResults(results[data[1]][data[2]])
     })
     .fail((error)=>{
-<<<<<<< HEAD
-        myTuneApp.printResults(myTuneApp["errorResults"])
-=======
         return null
->>>>>>> stu_branch
     })  
 };
 
