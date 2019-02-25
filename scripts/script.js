@@ -1,4 +1,4 @@
-// !! JavaScript contributions by both Derek and Stuart for different sections of app; refactored once all functions were created!!
+// !! JavaScript contributions by both Derek and Stuart for different sections of app; refactored once all functions were created !!
 
 // project parent object
 const myTuneApp = {};
@@ -41,21 +41,6 @@ myTuneApp.errorResults = {
     },
     name: "Not A Valid Search"
 };
-
-
-myTuneApp.init = function () {
-
-    this.getData(myTuneApp.initialSearchValues);
-    this.getSimilarData(myTuneApp.initialSimilarSearchValues);
-    this.handleTextSearch();
-    this.handleClickSearch();
-};
-
-
-$(function () {
-
-    myTuneApp.init();
-});
 
 // route user submited text data
 myTuneApp.handleTextSearch = function() {
@@ -176,7 +161,6 @@ myTuneApp.organizeSimilarSearchInfo = function(searchData) {
     return [data, returnValue, arrayValue];
 };
 
-
 // fetch data using last.fm API
 myTuneApp.getData = function(data) {
 
@@ -205,8 +189,7 @@ myTuneApp.getSimilarData = function(data) {
     .fail((error) => {
         return null
     })  
-}
-
+};
 
 // appends to the DOM
 myTuneApp.printResults = function (artistInfoArray) {
@@ -217,7 +200,6 @@ myTuneApp.printResults = function (artistInfoArray) {
     //append track results
     this.appendTopTracks(artistInfoArray)
 };
-
 
 // append images to DOM
 myTuneApp.appendImage = function (artistInfoArray) {
@@ -230,7 +212,6 @@ myTuneApp.appendImage = function (artistInfoArray) {
 
     $songImage.append(`<img src="${image[image.length - 1]['#text']}" alt="image of ${artist['name']}">`);
 };
-
 
 // append top tracks to DOM
 myTuneApp.appendTopTracks = function(artistInfoArray) {
@@ -262,7 +243,6 @@ myTuneApp.appendTopTracks = function(artistInfoArray) {
     });
 };
 
-
 //appends similar artists to the DOM
 myTuneApp.appendSimilarArtists = function (similarArtistArray) {
     
@@ -286,3 +266,16 @@ myTuneApp.appendSimilarArtists = function (similarArtistArray) {
         $('.grid').append($newLi)
     });
 };
+
+myTuneApp.init = function () {
+
+    this.getData(myTuneApp.initialSearchValues);
+    this.getSimilarData(myTuneApp.initialSimilarSearchValues);
+    this.handleTextSearch();
+    this.handleClickSearch();
+};
+
+$(function () {
+
+    myTuneApp.init();
+});
