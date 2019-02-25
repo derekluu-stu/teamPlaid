@@ -14,22 +14,22 @@
     <header>
         <div class="headerContainer wrapper flexRow">
             
-            <h1>tune.in</h1>
+            <h1>tune<span>.</span>in</h1>
 
             <form action="submit" class="searchFunction flexRow">
 
                 <div class="searchSelector">
-                    <input type="radio" id="searchArtist" name="searchParameter" checked>
+                    <input type="radio" id="searchArtist" name="searchParameter">
                     <label for="searchArtist">Artist</label>
 
                     <input type="radio" id="searchGenre" name="searchParameter">
                     <label for="searchGenre">Genre</label>
                 </div>
 
-                <div class="searchBar">
-                    <input type="text" placeholder="Search">
-                    <input type="submit" value="Search">
-                    <!-- make this button a search icon -->
+                <div class="searchBar flexRow">
+                    <label for="search" class="visuallyhidden search">please enter your search</label>
+                    <input type="text" placeholder="Search" name="search">
+                    <input type="submit" value="tune.in">
                 </div>
             </form>
         </div>
@@ -37,23 +37,20 @@
 
     <main>
         <div class="mainContainer">
-            <!-- <div class="wrapper flexRow flexColumn_mobile"> -->
             <section class="mainInfoDisplay wrapper flexRow">
 
                 <!-- Image & Search Info -->
-                <section class="infoContainer flexRow">
-                        
+                <div class="infoContainer flexRow">
                     <div class="songImage"></div>
 
                     <div class="songInfo">
                         <h2 class="infoTitle"></h2>
                         <h3 class="infoText"></h3>
                     </div>
-                </section>
+                </div>
                         
                 <!-- Top Tracks Relating to User Search -->
-                <section class="songListContainer">
-
+                <div class="songListContainer">
                     <div class="trackHeader">
                         <ol class="trackHeading flexRow">
                             <li><h2>Track Title</h2></li>
@@ -64,12 +61,13 @@
                     <div class="songList">
                         <ol></ol>
                     </div> 
-                </section>
+                </div>
+                
             </section> <!-- wrapper -->
 
             <!-- Section with suggested artists -->
             <section>
-                <div class="wrapper">
+                <div class="similarArtistsContainer wrapper flexRow">
                     <div class="suggestions">
                         <h2>Similar Artists</h2>
                         <ul class="grid">
@@ -80,7 +78,6 @@
         </div>
     </main>
 
-    <!-- force commit -->
     <footer>
         <div class="wrapper">
             <p>Created by <span>teamPlaid</span> &copy; 2019</p>

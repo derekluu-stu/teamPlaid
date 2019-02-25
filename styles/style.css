@@ -167,9 +167,6 @@ img {
   display: block;
   max-width: 100%; }
 
-section {
-  margin-bottom: 2.5%; }
-
 .wrapper {
   width: 80%;
   max-width: 1600px;
@@ -189,12 +186,13 @@ header {
   right: 0;
   background-color: #161616;
   color: #e0e2db; }
+  header h1 span {
+    color: darkorange; }
 
 .headerContainer {
   flex-flow: row wrap;
   justify-content: space-between;
-  align-items: center;
-  padding: 1% 0; }
+  padding: 1% 0 3% 0; }
 
 form {
   font-family: "Open Sans", sans-serif;
@@ -219,8 +217,12 @@ label[for="searchArtist"] {
 .searchFunction {
   flex-direction: column; }
 
+.searchBar.grid {
+  justify-content: space-between; }
+
 .searchBar {
-  margin-top: 2%; }
+  margin-top: 2%;
+  justify-content: space-between; }
   .searchBar input[type="text"] {
     background-color: #333333;
     border: 1.5px solid transparent;
@@ -238,17 +240,20 @@ label[for="searchArtist"] {
     border: 2px solid #333333;
     color: #e0e2db;
     background: transparent;
-    transition: color 0.15s ease-in, border-color 0.15s ease-in, background 0.15s ease-in; }
-  .searchBar input[type="submit"]:hover {
+    transition: all 0.15s ease-in;
+    margin-left: 10px; }
+  .searchBar input[type="submit"]:hover,
+  .searchBar input[type="submit"]:focus {
     background: darkorange;
-    border-color: transparent; }
+    border-color: transparent;
+    color: #333333; }
 
 main {
   background-color: #161616;
   color: #e0e2db; }
 
 .mainContainer {
-  padding: 150px 0 0.1% 0; }
+  padding: 100px 0 0.1% 0; }
 
 .infoContainer,
 .songListContainer {
@@ -256,11 +261,11 @@ main {
 
 .mainInfoDisplay {
   flex-flow: row wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start; }
 
 .infoContainer {
-  flex: 1 0 40%;
+  width: 45%;
   flex-flow: column nowrap; }
 
 .songInfo {
@@ -269,11 +274,13 @@ main {
     text-transform: capitalize; }
 
 .songListContainer {
-  flex: 1 1 60%; }
+  width: 55%;
+  max-height: 386px;
+  margin-bottom: 2.5%; }
 
 .songList {
-  max-height: 350px;
-  overflow: scroll; }
+  max-height: 348px;
+  overflow-y: scroll; }
   .songList li:nth-child(2n + 1) {
     background-color: black; }
   .songList li {
@@ -303,32 +310,41 @@ main {
 .trackHeading li:nth-of-type(2n + 1) {
   padding-left: 2%; }
 
-.suggestions h2 {
-  text-align: center;
-  margin-bottom: 1.5%; }
+.mainInfoDisplay + section {
+  margin-bottom: 2.25%; }
 
-.suggestions .grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }
-  .suggestions .grid li {
+.suggestions {
+  width: 100%; }
+  .suggestions h2 {
     margin-bottom: 1.5%;
-    transition: color 0.25s ease-in; }
-  .suggestions .grid li:hover {
-    cursor: pointer;
-    color: darkorange; }
+    font-size: 1.25rem; }
+  .suggestions .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    font-size: 0.85rem;
+    max-height: 70px;
+    overflow-y: scroll; }
+    .suggestions .grid li {
+      margin-bottom: 1.5%;
+      transition: color 0.25s ease-in; }
+    .suggestions .grid li:hover {
+      cursor: pointer;
+      color: darkorange; }
 
 footer {
   text-align: center;
   padding: .75% 0;
   background-color: #161616;
   color: #e0e2db;
-  font-size: 0.8rem; }
+  font-size: 0.75rem; }
   footer span {
     color: darkorange; }
   footer p:last-child {
-    font-size: 0.6rem; }
+    font-size: 0.55rem; }
 
 @media (max-width: 1140px) {
+  .mainContainer {
+    padding-top: 90px; }
   .mainInfoDisplay {
     flex-flow: column nowrap;
     align-items: center; }
@@ -337,8 +353,6 @@ footer {
     width: 100%; }
   .infoContainer {
     align-items: center; }
-  .songInfo {
-    text-align: center; }
   .trackHeading,
   .track {
     justify-content: space-around;
@@ -351,12 +365,42 @@ footer {
   .trackHeading li:nth-of-type(1) {
     padding-left: 5%; }
   .trackHeading li:nth-of-type(2) {
-    padding-left: 1%; } }
+    padding-left: 1%; }
+  .suggestions .grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr; } }
 
 @media (max-width: 768px) {
+  html {
+    font-size: 100%; }
+  .suggestions .grid {
+    grid-template-columns: 1fr 1fr 1fr; } }
+
+@media (max-width: 530px) {
   .headerContainer {
-    flex-flow: column nowrap;
-    align-items: center;
-    text-align: center; }
-  .mainContainer {
-    padding: 200px 0 0.5% 0; } }
+    justify-content: center; }
+    .headerContainer h1 {
+      flex-basis: 301px; }
+  .searchBar {
+    justify-content: flex-start; }
+  .songListContainer,
+  .similarArtistsContainer {
+    max-width: 301px; }
+  .similarArtistsContainer {
+    justify-content: center; }
+  .suggestions .grid {
+    grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 391px) {
+  .wrapper {
+    width: 90%; }
+  .headerContainer {
+    justify-content: flex-start; }
+  .searchBar {
+    flex-wrap: wrap; }
+    .searchBar input[type="submit"],
+    .searchBar label.search {
+      margin-left: 0;
+      margin-top: 2%; }
+    .searchBar input[type="text"] {
+      width: 100%;
+      height: 50%; } }

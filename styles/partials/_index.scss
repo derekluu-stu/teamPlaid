@@ -32,10 +32,6 @@ img {
 }
 
 
-section {
-    margin-bottom: $sectionSpace;
-}
-
 .wrapper {
     width: 80%;
     max-width: 1600px;
@@ -61,13 +57,17 @@ header {
     right: 0;
     background-color: $primaryColor;
     color: $tertiaryColor;
+
+    h1 span {
+        color: $accentColor;
+    }
 }
+
 
 .headerContainer {
     flex-flow: row wrap;
     justify-content: space-between;
-    align-items: center;
-    padding: 1% 0;
+    padding: 1% 0 3% 0;
 }
 
 form {
@@ -100,8 +100,14 @@ label[for="searchArtist"] {
     flex-direction: column;
 }
 
+
+.searchBar.grid {
+    justify-content: space-between;
+}
+
 .searchBar {
     margin-top: 2%;
+    justify-content: space-between;
     
     input[type="text"] {
         background-color: $secondaryColor;
@@ -126,16 +132,15 @@ label[for="searchArtist"] {
         border: 2px solid $secondaryColor;
         color: $tertiaryColor;
         background: transparent;
-        transition: color 0.15s ease-in,
-                    border-color 0.15s ease-in,
-                    background 0.15s ease-in;
+        transition: all 0.15s ease-in;
+        margin-left: 10px;
     }
 
-    input[type="submit"]:hover {
-        // color: $accentColor;
-        // border-color: $accentColor;
+    input[type="submit"]:hover, 
+    input[type="submit"]:focus {
         background: $accentColor;
         border-color: transparent;  
+        color: $secondaryColor;
     }
 }
 
@@ -146,7 +151,7 @@ main{
 }
 
 .mainContainer {
-    padding: 150px 0 0.1% 0;
+    padding: 100px 0 0.1% 0;
 }
 
 .infoContainer,
@@ -156,12 +161,12 @@ main{
 
 .mainInfoDisplay {
     flex-flow: row wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
 }
 
 .infoContainer {
-    flex: 1 0 40%;
+    width: 45%;
     flex-flow: column nowrap;
 }
 
@@ -173,15 +178,16 @@ main{
     }
 }
 
-
 // song list section
 .songListContainer {
-    flex: 1 1 60%;
+    width: 55%;
+    max-height: 386px;
+    margin-bottom: 2.5%;
 }
 
 .songList {
-    max-height: 350px;
-    overflow: scroll; 
+    max-height: 348px;
+    overflow-y: scroll; 
 
     li:nth-child(2n + 1){
         background-color: black;
@@ -191,6 +197,7 @@ main{
         margin-bottom: 1.5%;
         padding: 1.75% 0 1.75% 3%;
     }
+
 }
 .trackHeader {
     margin-bottom: 1.5%;
@@ -227,16 +234,27 @@ main{
 // Section with similar artists
 
 
+.mainInfoDisplay + section {
+    margin-bottom: 2.25%; 
+    //0.75% padding applied to top of footer. 2.5% consistent with header
+}
+
 .suggestions {
+
+    width: 100%; 
+
     h2 {
-        text-align: center;
         margin-bottom: 1.5%;
+        font-size: 1.25rem;
     }
     
     
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        font-size: 0.85rem;
+        max-height: 70px;
+        overflow-y: scroll;
     
         li {
             margin-bottom: 1.5%;
@@ -258,20 +276,24 @@ footer {
     padding: .75% 0;
     background-color: $primaryColor;
     color: $tertiaryColor;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 
     span {
         color: $accentColor;
     }
 
     p:last-child{
-        font-size: 0.6rem;
+        font-size: 0.55rem;
     }
 }
 
 // ---------- media queries ----------
 @media (max-width: 1140px) {
     
+    .mainContainer {
+        padding-top: 90px;
+    }
+
    .mainInfoDisplay {
         flex-flow: column nowrap;
         align-items: center;
@@ -284,10 +306,6 @@ footer {
 
     .infoContainer {
         align-items: center;
-    }
-
-    .songInfo {
-        text-align: center;
     }
 
     .trackHeading,
@@ -303,25 +321,98 @@ footer {
 
     .trackHeading {
 
-    li:nth-of-type(1) {
-        padding-left: 5%;
+        li:nth-of-type(1) {
+            padding-left: 5%;
+        }
+
+        li:nth-of-type(2) {
+            padding-left: 1%;
+        }
     }
 
-    li:nth-of-type(2) {
-        padding-left: 1%;
+    .suggestions {
+        .grid {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
     }
-}
 }
 
 @media (max-width: 768px) {
 
-    .headerContainer {
-        flex-flow: column nowrap;
-        align-items: center;
-        text-align: center;
+    html {
+        font-size: 100%;
     }
 
-    .mainContainer {
-        padding: 200px 0 0.5% 0;
+    .suggestions {
+        .grid{
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+}
+
+@media (max-width: 530px) {
+
+
+    .headerContainer {
+
+        justify-content: center;
+
+        h1 {
+            flex-basis: 301px;
+        }
+    }
+
+    .searchBar {
+        justify-content: flex-start;
+    }
+
+    // .infoContainer {
+    //     flex-direction: column;
+    //     align-items: flex-start;
+    // }
+
+
+    .songListContainer,
+    .similarArtistsContainer {
+        max-width: 301px;
+    }
+
+    .similarArtistsContainer {
+        justify-content: center;
+    }
+    
+    .suggestions {
+
+        .grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+    }
+}
+
+@media (max-width: 391px){
+
+    .wrapper {
+        width: 90%;
+    }
+
+    .headerContainer {
+        justify-content: flex-start;
+    }
+
+    .searchBar {
+        flex-wrap: wrap;
+
+        input[type="submit"],
+        label.search{
+            margin-left: 0;
+            margin-top: 2%;
+        }
+
+        input[type="text"]{
+            width: 100%;
+            height: 50%;
+        }
     }
 }
