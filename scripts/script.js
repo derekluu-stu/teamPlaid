@@ -175,8 +175,7 @@ myTuneApp.getData = function(data) {
         myTuneApp.printResults(results[data[1]][data[2]])
     })
     .fail((error)=>{
-        // myTuneApp.printResults(myTuneApp["errorResults"])
-        console.log(error)
+        myTuneApp.printResults(myTuneApp["errorResults"])
     })  
 };
 
