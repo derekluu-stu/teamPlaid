@@ -22,7 +22,7 @@ myTuneApp.initialSimilarSearchValues = [{
         api_key: myTuneApp.apiKey,
         method: "geo.gettopartists",
         country: "Canada", // make variable in the future with geo API?
-        limit: 20,
+        limit: 5,
         format: "json"
     },
     "topartists",
@@ -135,7 +135,7 @@ myTuneApp.organizeSimilarSearchInfo = function(searchData) {
 
     let data = {
         api_key: myTuneApp.apiKey,
-        limit: 20,
+        limit: 5,
         format: "json",
         autocorrect: 1
     }
