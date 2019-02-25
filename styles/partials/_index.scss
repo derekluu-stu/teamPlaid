@@ -51,18 +51,16 @@ img {
 // -------------------- Header --------------------
 
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     background-color: $primaryColor;
     color: $tertiaryColor;
+    z-index: 10;
 
     h1 span {
         color: $accentColor;
     }
 }
-
 
 .headerContainer {
     flex-flow: row wrap;
@@ -151,7 +149,7 @@ main{
 }
 
 .mainContainer {
-    padding: 10% 0 0.1% 0;
+    padding-bottom: 0.1%;
 }
 
 .infoContainer,
@@ -181,21 +179,25 @@ main{
 // song list section
 .songListContainer {
     width: 55%;
-    max-height: 386px;
+    height: 388px;
     margin-bottom: 2.5%;
 }
 
 .songList {
-    max-height: 348px;
-    overflow-y: scroll; 
+    max-height: 325px;
+    overflow-y: auto; 
 
     li:nth-child(2n + 1){
-        background-color: black;
+        background-color: $secondaryColor;
     }
 
     li {
         margin-bottom: 1.5%;
         padding: 1.75% 0 1.75% 3%;
+
+        p:first-child{
+            font-weight:600;
+        }
     }
 
 }
@@ -256,14 +258,13 @@ main{
     
     .grid {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         font-size: 0.85rem;
         max-height: 70px;
-        overflow-y: scroll;
     
         li {
             margin-bottom: 1.5%;
-            transition: color 0.25s ease-in,
+            transition: color 0.25s ease-in;
             
         }
         
@@ -293,11 +294,11 @@ footer {
 }
 
 // ---------- media queries ----------
-@media (max-width: 990px) {
+@media (max-width: 1050px) {
     
-    html {
-        font-size: 100%;
-    }
+    // html {
+    //     font-size: 100%;
+    // }
 
     .infoContainer, .songListContainer{
         width: 50%;
@@ -322,7 +323,7 @@ footer {
             font-size: 0.75rem;
             padding-top: 1%;
             padding-left: 1%;
-            color: $secondaryColor;
+            // color: $secondaryColor;
             transition: color 0.15s ease-in;
             align-self: flex-start;
         }
@@ -339,21 +340,26 @@ footer {
 
     .suggestions {
         .grid {
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
         }
     }
+
 }
+
 
 @media (max-width: 800px) {
 
+    html {
+        font-size: 112.5%;
+    }
+
     .headerContainer {
-        // flex-direction: column;
         justify-content: center;
         width: 301px;
     }
 
     h1, .searchFunction {
-        flex-basis: 301px;
+        width: 301px;
     }
 
     input[type="text"]{
@@ -395,7 +401,7 @@ footer {
 
     .suggestions {
         .grid{
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
         }
     }
 
@@ -407,17 +413,15 @@ footer {
         width: 90%;
     }
   
-    .suggestions {
 
-        .grid {
-            grid-template-columns: 1fr 1fr;
-        }
-
-    }
 }
 
 @media (max-width: 391px){
 
+    html {
+        font-size: 100%;
+    }
+    
     .wrapper {
         width: 98%;
     }

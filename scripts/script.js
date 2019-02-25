@@ -128,7 +128,7 @@ myTuneApp.appendImages = function(displayImage, artistName){
 // append top tracks to DOM
 myTuneApp.appendTopTracks = function(artistInfoArray) {
 
-    const $songList = $(".songList>ol");
+    const $songList = $(".songList ol");
 
     $songList.empty();
 
@@ -261,7 +261,7 @@ myTuneApp.artistGetSimilarArtist = function (artistInfo) {
             method: "artist.getsimilar",
             format: "json",
             artist: artistInfo, 
-            limit: 15
+            limit: 6
         }
     })
 
@@ -285,7 +285,7 @@ myTuneApp.genreGetSimilarArtist = function (genre) {
             method: "tag.getTopArtists",
             format: "json",
             tag: genre, 
-            limit: 15
+            limit: 6
         }
     })
 
@@ -309,7 +309,7 @@ myTuneApp.getSimilarArtistsByLocation = function () {
             method: "geo.getTopArtists",
             format: "json",
             country: "Canada",
-            limit: 15
+            limit: 6
         }
     })
 
@@ -336,4 +336,7 @@ myTuneApp.init = function () {
 $(function () {
 
     myTuneApp.init();
+    //scrollbox library
+    $('.songList').scrollBox();
+    $('.gridContainer').scrollBox();
 });

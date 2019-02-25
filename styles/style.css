@@ -180,12 +180,11 @@ img {
   display: flex; }
 
 header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   background-color: #161616;
-  color: #e0e2db; }
+  color: #e0e2db;
+  z-index: 10; }
   header h1 span {
     color: darkorange; }
 
@@ -253,7 +252,7 @@ main {
   color: #e0e2db; }
 
 .mainContainer {
-  padding: 10% 0 0.1% 0; }
+  padding-bottom: 0.1%; }
 
 .infoContainer,
 .songListContainer {
@@ -275,17 +274,19 @@ main {
 
 .songListContainer {
   width: 55%;
-  max-height: 386px;
+  height: 388px;
   margin-bottom: 2.5%; }
 
 .songList {
-  max-height: 348px;
-  overflow-y: scroll; }
+  max-height: 325px;
+  overflow-y: auto; }
   .songList li:nth-child(2n + 1) {
-    background-color: black; }
+    background-color: #333333; }
   .songList li {
     margin-bottom: 1.5%;
     padding: 1.75% 0 1.75% 3%; }
+    .songList li p:first-child {
+      font-weight: 600; }
 
 .trackHeader {
   margin-bottom: 1.5%; }
@@ -324,10 +325,9 @@ main {
     font-size: 1.25rem; }
   .suggestions .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     font-size: 0.85rem;
-    max-height: 70px;
-    overflow-y: scroll; }
+    max-height: 70px; }
     .suggestions .grid li {
       margin-bottom: 1.5%;
       transition: color 0.25s ease-in; }
@@ -346,9 +346,7 @@ footer {
   footer p:last-child {
     font-size: 0.55rem; }
 
-@media (max-width: 990px) {
-  html {
-    font-size: 100%; }
+@media (max-width: 1050px) {
   .infoContainer, .songListContainer {
     width: 50%; }
   .trackHeading li:last-child {
@@ -363,7 +361,6 @@ footer {
       font-size: 0.75rem;
       padding-top: 1%;
       padding-left: 1%;
-      color: #333333;
       transition: color 0.15s ease-in;
       align-self: flex-start; }
     .track.flexRow p:last-child:hover {
@@ -371,14 +368,16 @@ footer {
   .songList li {
     padding-left: 0%; }
   .suggestions .grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr; } }
+    grid-template-columns: 1fr 1fr 1fr; } }
 
 @media (max-width: 800px) {
+  html {
+    font-size: 112.5%; }
   .headerContainer {
     justify-content: center;
     width: 301px; }
   h1, .searchFunction {
-    flex-basis: 301px; }
+    width: 301px; }
   input[type="text"] {
     max-width: 70%; }
   input[type="submit"] {
@@ -399,14 +398,47 @@ footer {
   .similarArtistsContainer {
     justify-content: center; }
   .suggestions .grid {
-    grid-template-columns: 1fr 1fr 1fr; } }
+    grid-template-columns: 1fr 1fr; } }
 
 @media (max-width: 530px) {
   .wrapper {
-    width: 90%; }
-  .suggestions .grid {
-    grid-template-columns: 1fr 1fr; } }
+    width: 90%; } }
 
 @media (max-width: 391px) {
+  html {
+    font-size: 100%; }
   .wrapper {
     width: 98%; } }
+
+.sb-container {
+  position: relative;
+  overflow: hidden;
+  padding-right: 10px; }
+
+.sb-content {
+  height: 325px;
+  width: 120%;
+  padding-right: 20%;
+  overflow-y: scroll;
+  box-sizing: border-box; }
+
+.sb-scrollbar-container {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  top: 5px;
+  width: 10px; }
+
+.sb-scrollbar-container-hide {
+  right: -20px; }
+
+.sb-scrollbar {
+  position: absolute;
+  right: 0;
+  height: 80px;
+  width: 10px;
+  border-radius: 10px;
+  background: rgba(50, 50, 50, 0.5); }
+
+.sb-scrollbar:hover {
+  background: rgba(0, 0, 0, 0.5); }
