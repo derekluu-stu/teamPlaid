@@ -1,25 +1,33 @@
 // -------------------- Universals --------------------
 
 * {
-    margin: 0;
     padding: 0;
 }
 
+
 html {
     font-size: 125%;
-    position: relative;
+    background-color: $primaryColor;
+    color: $tertiaryColor;
 }
 
 body {
     font-family: $secondaryFont;
+    position: relative;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-family: $primaryFont;
+    margin: 0;
 }
+
 
 li {
     list-style: none;
+}
+
+p {
+    margin: 0;
 }
 
 a {
@@ -41,7 +49,7 @@ img {
 
 .flexColumn {
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
 }
 
 .flexRow {
@@ -99,11 +107,6 @@ label[for="searchArtist"] {
     flex-direction: column;
 }
 
-
-.searchBar.grid {
-    justify-content: space-between;
-}
-
 .searchBar {
     margin-top: 2%;
     justify-content: space-between;
@@ -145,18 +148,9 @@ label[for="searchArtist"] {
 }
 
 // -------------------- Main Styling --------------------
-main{
-    background-color: $primaryColor;
-    color: $tertiaryColor;
-}
 
 .mainContainer {
     padding-bottom: 0.1%;
-}
-
-.infoContainer,
-.songListContainer {
-    max-height: 20%;
 }
 
 .mainInfoDisplay {
@@ -185,7 +179,6 @@ main{
 }
 
 .songList {
-    max-height: 325px;
     overflow-y: auto; 
 
     li:nth-child(2n + 1){
@@ -243,7 +236,7 @@ main{
 }
 
 
-// Section with similar artists
+// // Section with similar artists
 
 
 .mainInfoDisplay + section {
@@ -265,7 +258,6 @@ main{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         font-size: 0.85rem;
-        max-height: 70px;
     
         li {
             margin-bottom: 1.5%;
@@ -280,7 +272,7 @@ main{
     }
 }
 
-// ---------- Footer ---------- 
+// // ---------- Footer ---------- 
 
 footer {
     text-align: center;
@@ -301,9 +293,9 @@ footer {
 // ---------- media queries ----------
 @media (max-width: 1050px) {
     
-    // html {
-    //     font-size: 100%;
-    // }
+    html {
+        font-size: 100%;
+    }
 
     .infoContainer, .songListContainer{
         width: 50%;
@@ -328,7 +320,6 @@ footer {
             font-size: 0.75rem;
             padding-top: 1%;
             padding-left: 1%;
-            // color: $secondaryColor;
             transition: color 0.15s ease-in;
             align-self: flex-start;
         }

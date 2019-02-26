@@ -336,6 +336,5 @@ $(function () {
 
     myTuneApp.init();
     //scrollbox library
-    $('.songList').scrollBox();
-    $('.gridContainer').scrollBox();
+    // $('.songList').scrollBox();
 });

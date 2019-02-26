@@ -7,87 +7,85 @@
     <title>tune.in</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:300|Open+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
-
 </head>
 <body>
-    
     <header>
         <div class="headerContainer wrapper flexRow">
-            
+        
             <h1>tune<span>.</span>in</h1>
-
+        
             <form action="submit" class="searchFunction flexRow">
-
+        
                 <div class="searchSelector">
                     <input type="radio" id="searchArtist" name="searchParameter" required>
                     <label for="searchArtist">Artist</label>
-
+        
                     <input type="radio" id="searchGenre" name="searchParameter">
                     <label for="searchGenre">Genre</label>
                 </div>
-
+        
                 <div class="searchBar flexRow">
                     <label for="search" class="visuallyhidden search">please enter your search</label>
                     <input type="text" placeholder="Search" name="search">
                     <input type="submit" value="Tune In!">
                 </div>
+        
             </form>
         </div>
     </header>
-
+    
     <main>
-        <div class="mainContainer">
-            <section class="mainInfoDisplay wrapper flexRow">
-
-                <!-- Image & Search Info -->
-                <div class="infoContainer flexRow">
-                    <div class="songImage"></div>
-
-                    <div class="songInfo">
-                        <h2 class="infoTitle"></h2>
-                        <h3 class="infoText"></h3>
-                    </div>
+    
+        <section class="mainInfoDisplay wrapper flexRow">
+            <div class="infoContainer flexRow">
+                <div class="songImage"></div>
+    
+                <div class="songInfo">
+                    <h2 class="infoTitle"></h2>
+                    <h3 class="infoText"></h3>
                 </div>
-                        
-                <!-- Top Tracks Relating to User Search -->
-                <div class="songListContainer">
-                    <div class="trackHeader">
-                        <ol class="trackHeading flexRow">
-                            <li><h2>Songs</h2></li>
-                            <li><h2>Artist</h2></li>
-                        </ol>
-                    </div>
-
-                    <div class="songList sb-container">
-                        <ol></ol>
-                    </div> 
+            </div>
+    
+            <div class="songListContainer">
+                <div class="trackHeader">
+                    <ol class="trackHeading flexRow">
+                        <li>
+                            <h2>Songs</h2>
+                        </li>
+                        <li>
+                            <h2>Artist</h2>
+                        </li>
+                    </ol>
                 </div>
-                
-            </section> <!-- wrapper -->
-
-            <!-- Section with suggested artists -->
-            <section>
-                <div class="similarArtistsContainer wrapper flexRow">
-                    <div class="suggestions">
-                        <h2>Similar Artists</h2>
-                        <ul class="grid">
-                        </ul>
-                    </div>
-                </div> <!-- wrapper -->
-            </section>
-        </div>
+    
+                <div class="songList sb-container">
+                    <ol></ol>
+                </div>
+            </div>
+        </section>
+    
+        <section>
+            <div class="similarArtistsContainer wrapper flexRow">
+                <div class="suggestions">
+                    <h2>Similar Artists</h2>
+                    <ul class="grid">
+                    </ul>
+                </div>
+            </div>
+        </section>
+    
     </main>
-
+    
     <footer>
         <div class="wrapper">
             <p>Created by <span>teamPlaid</span> &copy; 2019</p>
             <p>Powered by last.fm</p>
         </div>
     </footer>
-
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
+    
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'
+        integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=' crossorigin='anonymous'></script>
     <script src='scripts/script.js'></script>
     <script src='scripts/scrollBar.js'></script>
-
 </body>
 </html>
