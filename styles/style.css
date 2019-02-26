@@ -161,6 +161,9 @@ h1, h2, h3 {
   font-family: "Open Sans", sans-serif;
   margin: 0; }
 
+ol {
+  margin: 0; }
+
 li {
   list-style: none; }
 
